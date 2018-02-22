@@ -1,0 +1,154 @@
+html{
+  font-size: 62.5%;
+}
+
+body{
+  background:#F4F4F4;
+  margin:0;
+
+}
+
+.container{
+  width:auto;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Header custom styles
+   ========================================================================== */
+
+header{
+    background: #242424;
+    opacity:.95;
+    vertical-align: middle;
+}
+
+
+#Intro{
+  text-align: left;
+  color:#FFFFFF;
+  font-size:5rem;
+  font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+  padding:7rem 10rem 2rem;
+}
+
+#SubIntro{
+  color:#525452;
+  font-size:2rem;
+}
+
+.navbar-header {
+  padding: 1rem;
+}
+
+.navbar-header a{
+  font-size: 2rem;
+}
+
+
+/* ==========================================================================
+   Main  custom styles
+   ========================================================================== */
+
+.sidebar > div, .blog-post{
+  margin:2rem 0rem;
+  text-align: center;
+  box-shadow: 0 1px 5px grey;
+  background:#FFFFFF;
+  padding:2rem;
+  box-sizing: border-box;
+}
+
+.main-column h2{
+  font-size:2rem;
+}
+
+.bg_video{
+  position: absolute;
+  top:0;
+  left:0;
+  height:19rem;
+  width: 100%;
+  z-index: -1;
+  opacity:.35;
+  overflow: hidden;
+}
+
+.bg_video__content{
+  height:100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#Intro, #SubIntro{
+  position: relative;
+}
+
+/* ==========================================================================
+   Blog custom styles
+   ========================================================================== */
+
+.blog-post__title{
+  text-transform: uppercase;
+  font-size:3.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin:3rem 0rem 0rem;
+}
+
+.blog-post__title:link,
+.blog-post__title:visited,
+.blog-post__title:active{
+  color: inherit;
+  text-decoration: none;
+  transition: all .1s;
+  transform: scale(1);
+  text-shadow: 0px 0px 0px;
+}
+
+.blog-post__title:hover
+{
+  text-shadow: 0px 2px 2px;
+}
+
+.blog-post__picture{
+  max-width:90%;
+  margin:2rem;
+}
+
+.blog-post__link{
+  color: black;
+  font-size: 2rem;
+}
+
+.blog-post__link:hover{
+  color: black;
+  transform: scale(1.1);
+}
+
+
+.Page_navigation{
+  text-align: center;
+}
+
+.Page_navigation a.page-link{
+  color: #333333;
+}
+
+/* ==========================================================================
+   Sidebar custom styles
+   ========================================================================== */
+.sidebar{
+  color:#616161;
+  text-align: justify;
+}
+
+.sidebar h2{
+  font-size:2rem;
+  text-align: center;
+}
+
+.footer{
+  padding: 2rem;
+  background-color: #FFFFFF;
+}
