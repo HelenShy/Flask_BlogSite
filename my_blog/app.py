@@ -1,7 +1,8 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 
-from my_blog.blueprints.main import main
 
+db = SQLAlchemy()
 
 def create_app():
     """
@@ -11,7 +12,9 @@ def create_app():
     """
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object('config.settings')
+    db.init_app(app)
 
+    from my_blog.blueprints.main import main
     app.register_blueprint(main)
     # @app.route('/', methods=['GET', 'POST'])
     # def index():
