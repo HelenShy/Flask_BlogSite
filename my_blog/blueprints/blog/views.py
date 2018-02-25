@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect,  url_for, abort
+from flask import Blueprint, render_template, flash, redirect,  url_for, abort, request
 from .models import BlogPost
 from datetime import datetime
 from my_blog.app import db
@@ -44,7 +44,13 @@ def edit(post_id):
     Generate page where selected post can be edited
     """
     blogpost = BlogPost.query.get_or_404(post_id)
-    return render_template('edit.html', blogpost = blogpost)
+    form = BlogPostForm(obj = blogpost)
+    if form.validate_on_submit():
+        form.populate_obj(blogpost)
+        db.session.commit()
+        flash("Changes to blog post are stored")
+        return redirect(url_for('admin.adminhome'))
+    return render_template('edit.html', form = form, form_title = 'Edit blog post')
 
 
 @blog.route('/delete/<int:post_id>', methods=['GET', 'POST'])
@@ -53,4 +59,11 @@ def delete(post_id):
     Generate page where selected post can be edited
     """
     blogpost = BlogPost.query.get_or_404(post_id)
-    return render_template('delete.html', blogpost = blogpost)
+    if (request.method == "POST"):
+        db.session.delete(blogpost)
+        db.session.commit()
+        flash("Deleted")
+        return redirect(url_for('admin.adminhome', blogposts = BlogPost.blogposts_page(1), pagenum = 1, user="admin"))
+    else:
+        flash("Please confirm deleting the bookmark.")
+    return  render_template('admin.adminhome', post_id=post_id)
