@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<div class="main-column">
+
+<div class="blogpost__header">
+  <figure class="blogpost__picture">
+    <img src="{{url_for('static', filename=blogpost.imagePath)}}" class="figure-img img-fluid rounded" alt="Blogpost background image">
+  </figure>
+  <div class="blogpost__title"><h1 >{{blogpost.title}}</h1></div>
+</div>
+
+<div class="blogpost__text">
+<p >{{blogpost.content}}</p>
+</div>
+<div class="blogpost__date">
+<p class="">{{blogpost.date}}</p>
+</div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% macro pagination(blogposts) %}
+  <ul class="pagination">
+    {% if blogposts.has_prev %}
+    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=blogposts.prev_num)}}">Previous</a></li>
+    {% endif %}
+
+    {% for page in blogposts.iter_pages() %}
+        {% if page <= (blogposts.page | int) +2 and page >= (blogposts.page | int) -2 %}
+          {% if page == blogposts.page  %}
+          <li class="page-item active" ><a class="page-link" href="#">{{blogposts.page}}<span class="sr-only">(current)</span></a></li>
+          {% else %}
+          <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=page)}}">{{page}}</a></li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+    {% if blogposts.has_next %}
+    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=blogposts.next_num)}}">Next</a></li>
+    {% endif %}
+  </ul>
+{% endmacro %}

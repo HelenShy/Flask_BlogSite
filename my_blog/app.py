@@ -14,15 +14,13 @@ def create_app():
     app.config.from_object('config.settings')
     db.init_app(app)
 
-    from my_blog.blueprints.main import main
-    app.register_blueprint(main)
-    # @app.route('/', methods=['GET', 'POST'])
-    # def index():
-    #     """
-    #     Render a Hello World response.
-    #
-    #     :return: Flask response
-    #     """
-    #     return render_template('base.html')
+    from my_blog.blueprints.main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    from my_blog.blueprints.admin import admin as admin_blueprint
+    app.register_blueprint(admin_blueprint, url_prefix='/admin')
+
+    from my_blog.blueprints.blog import blog as blog_blueprint
+    app.register_blueprint(blog_blueprint, url_prefix='/blog')
 
     return app

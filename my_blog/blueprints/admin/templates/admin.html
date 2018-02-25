@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block navbar_admin %}
+<div class="navbar-admin">
+<a class="navbar-item" href="{{url_for('blog.add')}}">
+  <svg class="icon">
+    <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
+  </svg>
+  NEW POST</a>
+</div>
+{% endblock %}

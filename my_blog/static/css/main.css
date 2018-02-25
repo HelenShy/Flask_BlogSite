@@ -13,80 +13,136 @@ body{
   box-sizing: border-box;
 }
 
-/* ==========================================================================
-   Header custom styles
-   ========================================================================== */
-
 header{
-    background: #242424;
-    opacity:.95;
     vertical-align: middle;
+    margin-bottom: 1rem;
 }
-
-
-#Intro{
-  text-align: left;
-  color:#FFFFFF;
-  font-size:5rem;
-  font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
-  padding:7rem 10rem 2rem;
-}
-
-#SubIntro{
-  color:#525452;
-  font-size:2rem;
-}
-
-.navbar-header {
-  padding: 1rem;
-}
-
-.navbar-header a{
-  font-size: 2rem;
-}
-
 
 /* ==========================================================================
-   Main  custom styles
+   Header  custom styles
    ========================================================================== */
 
-.sidebar > div, .blog-post{
-  margin:2rem 0rem;
-  text-align: center;
-  box-shadow: 0 1px 5px grey;
-  background:#FFFFFF;
-  padding:2rem;
-  box-sizing: border-box;
-}
-
-.main-column h2{
-  font-size:2rem;
+.header--mainpage{
+  display: block;
+  height: 85vh;
+  overflow: hidden;
+  clip-path:polygon(0 0, 100% 0, 100% 65vh, 0 100%);
 }
 
 .bg_video{
   position: absolute;
   top:0;
   left:0;
-  height:19rem;
+  height:85vh;
   width: 100%;
   z-index: -1;
-  opacity:.35;
-  overflow: hidden;
 }
 
 .bg_video__content{
   height:100%;
   width: 100%;
   object-fit: cover;
+
 }
 
-#Intro, #SubIntro{
-  position: relative;
+.header__intro{
+  background:linear-gradient(to right,   rgba(36,36,36,1) 0%, rgba(36,36,36,0.6) 100%);
+  width: 100%;
+  height: 100%;
+}
+
+#Intro{
+  position: absolute;
+  top:40%;
+  left:10%;
+  text-align: left;
+  color:#FF5733;
+  font-size:6rem;
+  font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
+}
+
+#SubIntro{
+  color:white;
+  font-size:2rem;
+}
+
+.header--standard{
+  height: 14vh;
+  background: #333;
+}
+
+/* ==========================================================================
+   Navbar custom styles
+   ========================================================================== */
+
+
+
+.navbar{
+  position:absolute;
+  top:0;
+  width: 100%;
+  z-index: 9999;
+  margin-bottom: 0;
+  vertical-align: middle;
+  padding:2rem;
+}
+
+.navbar-main, .navbar-admin{
+    display: inline-block;
+    padding:1.5rem;
+    height:100%;
+    vertical-align: middle;
+}
+
+.header--standard .navbar-main{
+  float: right;
+}
+
+
+.navbar-item {
+  height: 5rem;
+  padding: 2.5rem;
+  font-size: 18px;
+  line-height: 20px;
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+
+.navbar-item:hover,
+.navbar-item:focus {
+  text-decoration: none;
+  color: #FF5733;
+  background-color: transparent;
+}
+
+.navbar__logo{
+  display:inline-block;
+  text-align: left;
+  color:#FF5733;
+  font-size:3.5rem;
+}
+
+.navbar__logo:hover{
+  text-decoration: none;
+  color:#C8543B;
 }
 
 /* ==========================================================================
    Blog custom styles
    ========================================================================== */
+ .sidebar > div, .blog-post{
+   margin:2rem 0rem;
+   text-align: center;
+   box-shadow: 2px 3px 8px -3px grey;
+   background:#FFFFFF;
+   padding:2rem;
+   box-sizing: border-box;
+ }
+
+ .main-column h2{
+   font-size:2rem;
+ }
 
 .blog-post__title{
   text-transform: uppercase;
@@ -108,7 +164,7 @@ header{
 
 .blog-post__title:hover
 {
-  text-shadow: 0px 2px 2px;
+
 }
 
 .blog-post__picture{
@@ -135,6 +191,35 @@ header{
   color: #333333;
 }
 
+
+.editposts{
+  display:block;
+  margin: 2rem;
+  text-align: right;
+  transition: all 0.2s;
+
+}
+
+.editposts >*{
+  display: inline-block;
+  padding:2rem;
+  text-align: right;
+  color: inherit;
+
+}
+
+.editposts >*:hover{
+  text-decoration: none;
+  color: light-blue;
+  transform: scale3D(1.1, 1.1, 1.1);
+}
+
+.icon{
+  fill: currentColor;
+  height:1.5rem;
+  width:1.5rem;
+}
+
 /* ==========================================================================
    Sidebar custom styles
    ========================================================================== */
@@ -148,15 +233,76 @@ header{
   text-align: center;
 }
 
-.footer{
-  padding: 2rem;
-  background-color: #FFFFFF;
+
+/* ==========================================================================
+   Blogpost custom styles
+   ========================================================================== */
+
+ .blogpost__header{
+   max-height: 60vh;
+   display: block;
+   margin:0;
+   overflow: hidden;
+   position:relative;
+   z-index: -1;
+   text-align: center;
+   vertical-align: middle;
+ }
+
+.blogpost__title{
+  position:absolute;
+  top:15rem;
+  left:0;
+  width: 100%;
+  height: 100%;
+  display:inline;
+  z-index: 10;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.panel1{
-  float: left;
+.blogpost__title h1{
+  font-size:8rem;
+  color:white;
 }
 
-.panel2{
-  float: right;
+
+
+.blogpost__picture:after{
+  content: '';
+  background: rgba(51, 51, 51, 0.85);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  box-sizing: border-box;
+  }
+
+.blogpost__picture img{
+  transform: translateY(-30%);
+  width:100%;
+  height:100%;
 }
+
+
+.blogpost__text{
+
+  margin:2rem;
+  font-size: 2rem;
+  position: relative;
+}
+
+
+.blogpost__date{
+
+}
+
+/* ==========================================================================
+   Footer custom styles
+   ========================================================================== */
+
+ .footer{
+   padding: 2rem;
+   background-color: #FFFFFF;
+ }

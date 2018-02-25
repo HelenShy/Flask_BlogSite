@@ -1,10 +1,12 @@
-{% if  1 > 0 %}
+{% from "pagination_macros.html" import pagination %}
+
+{% if  blogposts.total > 0 %}
 
 
 {% for blogpost in blogposts.items %}
 
 {% with blogpost = blogpost %}
-{% include "blog-post.html"%}
+{% include "blogpost-intro.html"%}
 {% endwith %}
 
 {% endfor %}
@@ -14,17 +16,5 @@ No posts yet.
 {% endif %}
 
 <nav class="Page_navigation" aria-label="Page navigation">
-  <ul class="pagination">
-    {% if blogposts.has_prev %}
-    {% set prevpage = (pagenum | int) - 1 %}
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=prevpage)}}">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=prevpage)}}">{{prevpage}}</a></li>
-    {% else %}{% endif %}
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=2)}}">{{pagenum}}</a></li>
-    {% if blogposts.has_next %}
-    {% set nextpage = (pagenum | int) + 1 %}
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=nextpage)}}">{{nextpage}}</a></li>
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=nextpage)}}">Next</a></li>
-    {% else %}{% endif %}
-  </ul>
+{{ pagination(blogposts) }}
 </nav>

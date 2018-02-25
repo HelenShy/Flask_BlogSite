@@ -7,6 +7,7 @@ class BlogPost(db.Model):
     date = db.Column(db.DateTime)
     content = db.Column(db.String)
     imagePath = db.Column(db.String)
+    # published = db.Column(db.Boolean)
     # _tags = db.relationship('Tag', secondary ='tags', lazy ='joined', backref=db.backref('BlogPost', lazy='dynamic'))
 
     def __repr__(self):

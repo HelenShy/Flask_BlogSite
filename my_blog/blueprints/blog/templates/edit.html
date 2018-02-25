@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "form_macros.html" import render_field %}
+
+{% block content %}
+<div class="main-column">
+
+<h1>{{form_title}}</h1>
+<section>
+  <form action="" method="post">
+    {{form.hidden_tag()}}
+    <table>
+      {{ render_field(form.title, size=50) }}
+      {{ render_field(form.imagePath, size=50) }}
+      {{ render_field(form.content, size=3000) }}
+      <tr class="submit">
+        <td></td>
+        <td><button type="submit">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</section>
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

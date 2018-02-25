@@ -1,23 +1,34 @@
 {% extends "base.html" %}
 
-{% block navbar %}
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="#">Home</a>
-{% endblock %}
-
-{% block content %}
-
-<div class="container blog-posts">
-
-{% with blogposts = blogposts %}
-{% include "blog.html"%}
-{% endwith %}
-
+{% block header %}
+<div class="header--mainpage"
+  <div class="bg_video">
+    <video class="bg_video__content" autoplay muted loop>
+      <source src="{{ url_for('static', filename='img/video.mp4') }}" >
+    </video>
+  </div>
+  <div class="header__intro">
+    <div id="Intro">DevNotes
+      <div id="SubIntro">Dev`s blog. Quick start to technologies</div>
+    </div>
+  </div>
 </div>
 
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <div class="navbar-main">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-item" href="#">HOME</a>
+      <a class="navbar-item" href="#">ABOUT</a>
+    </div>
+    {% block navbar_admin %}
+    {% endblock %}
+    <!--/.navbar-collapse -->
+  </div>
+</nav>
 {% endblock %}
