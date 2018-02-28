@@ -15,6 +15,11 @@ class BlogPost(db.Model):
                              self.title, self.date, self.content, self.imagePath)
 
     @staticmethod
+    def get_by_title(title):
+        title = title.replace('%20', ' ')
+        return BlogPost.query.filter_by(title=title).first()
+
+    @staticmethod
     def blogposts_page(pagenum):
         blogposts = BlogPost.query.order_by(desc(BlogPost.id)).paginate(pagenum, 2 ,error_out=False)
         return blogposts

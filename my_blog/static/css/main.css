@@ -22,54 +22,78 @@ header{
    Header  custom styles
    ========================================================================== */
 
-.header--mainpage{
-  display: block;
-  height: 85vh;
-  overflow: hidden;
-  clip-path:polygon(0 0, 100% 0, 100% 65vh, 0 100%);
-}
 
-.bg_video{
-  position: absolute;
-  top:0;
-  left:0;
-  height:85vh;
-  width: 100%;
-  z-index: -1;
-}
+   .header--mainpage{
+     display: block;
+     height: 85vh;
+     overflow: hidden;
+     clip-path:polygon(0 0, 100% 0, 100% 65vh, 0 100%);
+     position: relative;
+     z-index: -1;
+   }
 
-.bg_video__content{
-  height:100%;
-  width: 100%;
-  object-fit: cover;
+   .bg_video{
+     position: relative;
+     top:0;
+     left:0;
+     height:85vh;
+     width: 100%;
+     z-index: -1;
+   }
 
-}
+   .photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: transform .5s ease-out;
+  }
 
-.header__intro{
-  background:linear-gradient(to right,   rgba(36,36,36,1) 0%, rgba(36,36,36,0.6) 100%);
-  width: 100%;
-  height: 100%;
-}
+   .header--mainpage:after{
+     content: '';
+     background: rgba(51, 51, 51, 0.6);
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     top:0;
+     left:0;
+     box-sizing: border-box;
+     }
 
-#Intro{
-  position: absolute;
-  top:40%;
-  left:10%;
-  text-align: left;
-  color:#FF5733;
-  font-size:6rem;
-  font-family: Raleway, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
-}
+   .bg_video__content{
+     height:100%;
+     width: 100%;
+     object-fit: cover;
 
-#SubIntro{
-  color:white;
-  font-size:2rem;
-}
+   }
 
-.header--standard{
-  height: 14vh;
-  background: #333;
-}
+
+   #Intro{
+     position: absolute;
+     top:40%;
+     left:10%;
+     text-align: left;
+     color:#c8543b;
+     font-size:6rem;
+     font-family: Baskerville Old;
+   }
+
+   #SubIntro{
+     color:white;
+     font-size:2rem;
+   }
+
+   .header--standard{
+     height: 14vh;
+     background: #333;
+   }
+
+
+
 
 /* ==========================================================================
    Navbar custom styles
@@ -117,6 +141,7 @@ header{
 }
 
 .navbar__logo{
+  font-family: Baskerville Old;
   display:inline-block;
   text-align: left;
   color:#FF5733;
@@ -131,7 +156,7 @@ header{
 /* ==========================================================================
    Blog custom styles
    ========================================================================== */
- .sidebar > div, .blog-post{
+ .sidebar > div, .blogpost-intro, .login-form, .edit_post-form{
    margin:2rem 0rem;
    text-align: center;
    box-shadow: 2px 3px 8px -3px grey;
@@ -144,7 +169,11 @@ header{
    font-size:2rem;
  }
 
-.blog-post__title{
+.blogpost-intro{
+  padding: 6rem 8rem;
+}
+
+.blogpost-intro__title{
   text-transform: uppercase;
   font-size:3.5rem;
   letter-spacing: 2px;
@@ -152,9 +181,9 @@ header{
   margin:3rem 0rem 0rem;
 }
 
-.blog-post__title:link,
-.blog-post__title:visited,
-.blog-post__title:active{
+.blogpost-intro__title:link,
+.blogpost-intro__title:visited,
+.blogpost-intro__title:active{
   color: inherit;
   text-decoration: none;
   transition: all .1s;
@@ -162,24 +191,29 @@ header{
   text-shadow: 0px 0px 0px;
 }
 
-.blog-post__title:hover
+.blogpost-intro__title:hover
 {
 
 }
 
-.blog-post__picture{
-  max-width:90%;
-  margin:2rem;
+.blogpost-intro__picture{
+  max-width:100%;
+  margin:2rem 0rem;
 }
 
-.blog-post__link{
+.blogpost-intro__link{
   color: black;
   font-size: 2rem;
 }
 
-.blog-post__link:hover{
+.blogpost-intro__link:hover{
   color: black;
   transform: scale(1.1);
+}
+
+.blogpost-intro__text{
+  text-align: justify;
+  font-size: 1.8rem;
 }
 
 
@@ -192,7 +226,7 @@ header{
 }
 
 
-.editposts{
+.edit-panel{
   display:block;
   margin: 2rem;
   text-align: right;
@@ -200,7 +234,7 @@ header{
 
 }
 
-.editposts >*{
+.edit-panel >*{
   display: inline-block;
   padding:2rem;
   text-align: right;
@@ -208,7 +242,7 @@ header{
 
 }
 
-.editposts >*:hover{
+.edit-panel >*:hover{
   text-decoration: none;
   color: light-blue;
   transform: scale3D(1.1, 1.1, 1.1);
@@ -298,6 +332,62 @@ header{
 
 }
 
+/* ==========================================================================
+   Forms custom styles
+   ========================================================================== */
+
+.login-section{
+  width:100%;
+  height:70vh;
+  position: relative;
+  transition: all .1s;
+}
+
+.login-form{
+  box-sizing: border-box;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width:40rem;
+  padding:0rem 5rem;
+  border-radius: 25px;
+}
+
+.edit_post-form{
+  margin: 5rem 10rem;
+  padding: 5rem;
+  border-radius: 25px;
+  font-size: 1.8rem;
+  text-align: left;
+}
+
+.login-form > *{
+  margin-bottom: 2rem;
+}
+
+
+.error{
+  background: #FAEBEB;
+  border-radius: 5px;
+  padding: 1rem;
+  /* visibility: hidden;
+  display: none; */
+}
+
+
+.login-form h1, .edit_post-form h1{
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.edit_post-panel{
+  text-align: center;
+}
+
+.edit_post-panel > *{
+  margin: 2rem;
+}
 /* ==========================================================================
    Footer custom styles
    ========================================================================== */

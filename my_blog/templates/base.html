@@ -36,8 +36,18 @@
 
                 <a class="navbar-item" href="{{url_for('main.index')}}">HOME</a>
                 <a class="navbar-item" href="#">ABOUT</a>
-                {% block navbar_admin %}
-                {% endblock %}
+
+                {% if current_user.is_authenticated %}
+                <div class="navbar-admin">
+                <a class="navbar-item" href="{{url_for('blog.add')}}">
+                  <svg class="icon">
+                    <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
+                  </svg>
+                  NEW POST</a>
+                <a class="navbar-item" href="{{url_for('admin.logout')}}">LOG OUT</a>
+                </div>
+                {% endif %}
+
               </div>
 
                 <!--/.navbar-collapse -->

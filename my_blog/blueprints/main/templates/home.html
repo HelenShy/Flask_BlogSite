@@ -6,6 +6,7 @@
     <video class="bg_video__content" autoplay muted loop>
       <source src="{{ url_for('static', filename='img/video.mp4') }}" >
     </video>
+
   </div>
   <div class="header__intro">
     <div id="Intro">DevNotes
@@ -25,9 +26,18 @@
       </button>
       <a class="navbar-item" href="#">HOME</a>
       <a class="navbar-item" href="#">ABOUT</a>
+      {% if current_user.is_authenticated %}
+      <div class="navbar-admin">
+      <a class="navbar-item" href="{{url_for('blog.add')}}">
+        <svg class="icon">
+          <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
+        </svg>
+        NEW POST</a>
+      <a class="navbar-item" href="{{url_for('admin.logout')}}">LOG OUT</a>
+      </div>
+      {% endif %}
     </div>
-    {% block navbar_admin %}
-    {% endblock %}
+
     <!--/.navbar-collapse -->
   </div>
 </nav>
