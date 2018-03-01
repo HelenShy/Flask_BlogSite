@@ -1,24 +1,60 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
-<div class="main-column">
 
-<div class="blogpost__header">
-  <figure class="blogpost__picture">
-    <img src="{{url_for('static', filename=blogpost.imagePath)}}" class="figure-img img-fluid rounded" alt="Blogpost background image">
-  </figure>
-  <div class="blogpost__title"><h1 >{{blogpost.title}}</h1></div>
-</div>
+  <div class="main-column">
 
-<div class="blogpost__text">
-<p >{{"{}".format(blogpost.content)}}</p>
-</div>
-<div class="blogpost__date">
-<p class="">{{blogpost.date}}</p>
-</div>
-</div>
+    <div class="blogpost__header">
+      <figure class="blogpost__picture">
+        <img src="{{url_for('static', filename=blogpost.imagePath)}}" class="figure-img img-fluid rounded" alt="Blogpost background image">
+      </figure>
+      <div class="blogpost__title"><h1 >{{blogpost.title}}</h1></div>
+    </div>
+
+    <div class="row">
+      <div class="blogpost__text col-md-offset-2 col-md-8 col-md-offset-2">
+      {{blogpost.markup_content()}}
+      </div>
+    </div>
+
+    {% if blogpost.tags %}
+    <div class="row">
+    <div class="blogpost__tags col-md-offset-2 col-md-8 col-md-offset-2">
+      <svg class="icon">
+        <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-price-tags') | replace('%23', '#')}}"></use>
+      </svg>
+      {% for tag in blogpost._tags %}
+      <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
+      {% endfor %}
+    </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+    <div class="blogpost__date col-md-offset-2 col-md-8 col-md-offset-2">
+      {{blogpost.formated_date()}}
+    </div>
+    </div>
+
+
+    {#<!-- <section class="Comments">
+
+      {% include "comment_form.html"%}
+
+      {% if blogpost.comments %}
+      {% for comment in blogpost.comments %}
+      <div class="Comment">
+        <div><p>comment.sender</p><div>
+        <div><p>comment.markup_content()</p><div>
+        <div><p>comment.formated_date()</p><div>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+    </section> -->#}
+  </div>
+
+
 
 {% endblock %}
 

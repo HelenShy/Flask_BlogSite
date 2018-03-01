@@ -1,8 +1,6 @@
 {% from "pagination_macros.html" import pagination %}
 
 {% if  blogposts.total > 0 %}
-
-
 {% for blogpost in blogposts.items %}
 
 {% with blogpost = blogpost %}
@@ -14,6 +12,7 @@
 {% else %}
 No posts yet.
 {% endif %}
+
 
 <nav class="Page_navigation" aria-label="Page navigation">
 {{ pagination(blogposts) }}

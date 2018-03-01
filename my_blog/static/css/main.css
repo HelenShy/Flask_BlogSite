@@ -5,7 +5,7 @@ html{
 body{
   background:#F4F4F4;
   margin:0;
-
+  font-family:  Oswald, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
 }
 
 .container{
@@ -25,9 +25,9 @@ header{
 
    .header--mainpage{
      display: block;
-     height: 85vh;
+     height: 100vh;
      overflow: hidden;
-     clip-path:polygon(0 0, 100% 0, 100% 65vh, 0 100%);
+     clip-path:polygon(0 0, 100% 0, 100% 85vh, 0 100%);
      position: relative;
      z-index: -1;
    }
@@ -36,7 +36,7 @@ header{
      position: relative;
      top:0;
      left:0;
-     height:85vh;
+     height:100vh;
      width: 100%;
      z-index: -1;
    }
@@ -55,7 +55,7 @@ header{
 
    .header--mainpage:after{
      content: '';
-     background: rgba(51, 51, 51, 0.6);
+     background: rgba(51, 51, 51, 0.8);
      position: absolute;
      width: 100%;
      height: 100%;
@@ -77,13 +77,12 @@ header{
      top:40%;
      left:10%;
      text-align: left;
-     color:#c8543b;
-     font-size:6rem;
-     font-family: Baskerville Old;
+     color:#FFFFFF;
+     font-size:7rem;
    }
 
    #SubIntro{
-     color:white;
+     color:#888888;
      font-size:2rem;
    }
 
@@ -144,13 +143,13 @@ header{
   font-family: Baskerville Old;
   display:inline-block;
   text-align: left;
-  color:#FF5733;
+  color:#C8543B;
   font-size:3.5rem;
 }
 
 .navbar__logo:hover{
   text-decoration: none;
-  color:#C8543B;
+  color: #FF5733;
 }
 
 /* ==========================================================================
@@ -171,12 +170,14 @@ header{
 
 .blogpost-intro{
   padding: 6rem 8rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .blogpost-intro__title{
   text-transform: uppercase;
-  font-size:3.5rem;
-  letter-spacing: 2px;
+  font-size:4rem;
+  letter-spacing: 0px;
   text-align: center;
   margin:3rem 0rem 0rem;
 }
@@ -193,7 +194,7 @@ header{
 
 .blogpost-intro__title:hover
 {
-
+  transform: scale(1.1);
 }
 
 .blogpost-intro__picture{
@@ -203,7 +204,7 @@ header{
 
 .blogpost-intro__link{
   color: black;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .blogpost-intro__link:hover{
@@ -217,6 +218,33 @@ header{
 }
 
 
+.blogpost-intro__date{
+  position: relative;
+  width: 100%;
+  height:6rem;
+}
+
+
+.blogpost-intro__date-value{
+  position: absolute;
+  left:-10%;
+  bottom: 5%;
+  height:4rem;
+  width: 100%;
+  background: #333333;
+  overflow: hidden;
+  clip-path:polygon(0 0, 40% 0, 35% 50%, 40% 100%, 0 100%);
+  color: white;
+}
+
+.blogpost-intro__date-value p{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+}
+
 .Page_navigation{
   text-align: center;
 }
@@ -228,25 +256,13 @@ header{
 
 .edit-panel{
   display:block;
-  margin: 2rem;
+  margin-bottom: 2rem;
   text-align: right;
   transition: all 0.2s;
 
 }
 
-.edit-panel >*{
-  display: inline-block;
-  padding:2rem;
-  text-align: right;
-  color: inherit;
 
-}
-
-.edit-panel >*:hover{
-  text-decoration: none;
-  color: light-blue;
-  transform: scale3D(1.1, 1.1, 1.1);
-}
 
 .icon{
   fill: currentColor;
@@ -267,10 +283,44 @@ header{
   text-align: center;
 }
 
+.tags .tag{
+  display: inline-block;
+  padding: 1rem;
+}
 
+
+.tags .tag:hover{
+  color:inherit;
+  transform: scale(1.2);
+}
+
+
+.tags a{
+  color: black;
+  font-size: 1.8rem;
+}
+
+.tags a:hover, .tags a:active{
+  color: black;
+  text-decoration: none;
+}
 /* ==========================================================================
    Blogpost custom styles
    ========================================================================== */
+
+.tag-
+{
+  background:  #888888;
+  color:#333;
+  padding: 1rem;
+  font-size:4rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.tag-header h1{
+  font-size:3rem;
+}
 
  .blogpost__header{
    max-height: 60vh;
@@ -295,6 +345,7 @@ header{
   vertical-align: middle;
 }
 
+
 .blogpost__title h1{
   font-size:8rem;
   color:white;
@@ -316,20 +367,48 @@ header{
 .blogpost__picture img{
   transform: translateY(-30%);
   width:100%;
-  height:100%;
+  height:100vh;
 }
 
 
 .blogpost__text{
-
-  margin:2rem;
+  padding:3rem 0rem 5rem;
   font-size: 2rem;
   position: relative;
 }
 
+.blogpost__tags{
+  transition: all .1s;
+}
+
+.blogpost__tags .icon{
+  width:2.5rem;
+  height:2.5rem;
+}
+
+.blogpost__tags .tag{
+  display: inline-block;
+}
+
+.blogpost__tags .tag:hover{
+    transform: scale(1.1);
+}
+
+.blogpost__tags a{
+  color: inherit;
+  padding:1rem;
+  font-family:monospace;
+}
+
+.blogpost__tags a:hover{
+  color:#96311c;
+  text-decoration: none;
+}
 
 .blogpost__date{
-
+  margin:5rem 0rem;
+  text-align: right;
+  font-size: 1.8rem;
 }
 
 /* ==========================================================================
@@ -394,5 +473,13 @@ header{
 
  .footer{
    padding: 2rem;
-   background-color: #FFFFFF;
+   background-color:#333333;
+   color: silver;
+   font-size: 1.5rem;
+ }
+
+ .Copyright{
+   border-top: 1px solid #272727;
+   margin:1rem 1rem 5rem;
+   padding: 1rem;
  }

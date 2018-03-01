@@ -6,6 +6,13 @@ from wtforms.validators import DataRequired, url, Length, Email, Regexp, EqualTo
 
 class BlogPostForm(Form):
     title = StringField("BlogPost title", validators = [DataRequired()])
-    #published = BooleanField("Select whether post should be published")
+    published = BooleanField("Select whether post should be published")
     imagePath = StringField(label='The url for post background image:', validators = [DataRequired()])
     content = TextAreaField("BlogPost content", validators = [DataRequired()])
+    tags = StringField("Tags")
+
+
+# class CommentForm(Form):
+#     sender = StringField("Name", validators = [DataRequired()])
+#     content = db.Column(db.String(516))
+#     level = db.Column(db.Integer)

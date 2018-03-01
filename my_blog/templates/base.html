@@ -79,11 +79,18 @@
               <div class="sidebar">
                 <div class="tags container">
                   <h2>TAGS</h2>
-                  <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                  {% if tags %}
+                    {% for tag in tags %}
+                    <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
+                    {% endfor %}
+                  {% endif %}
+
                 </div>
-                <div class="calendar container">
-                  <h2>CALENDAR</h2>
-                  <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <div class="blockquote container">
+                  <blockquote>
+                    <p>If you can dream it, you can do it.</p>
+                    <footer> <cite title="Source Title">Walt Disney</cite></footer>
+                  </blockquote>
                 </div>
               </div>
             {% endblock %}
@@ -94,7 +101,9 @@
 
     </div> <!-- /container -->
     <footer class="footer">
+      <div class="Copyright">
       <p>&copy; Copyright © 2018 DevNotes</p>
+      <div>
     </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

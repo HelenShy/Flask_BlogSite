@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, flash, redirect,  url_for, abort, 
 from flask_login import login_required, current_user
 from datetime import datetime
 
-from .models import BlogPost
+from .models import BlogPost, Tag
 from my_blog.app import db
 from .forms import BlogPostForm
 
@@ -16,6 +16,25 @@ def read(post_title):
     """
     blogpost = BlogPost.get_by_title(post_title)
     return render_template('read.html', blogpost = blogpost)
+
+# @blog.route('/<post_title>', methods=['GET', 'POST'])
+# def read(post_title):
+#     """
+#     Generate page with selected blog post to read
+#     """
+#     blogpost = BlogPost.get_by_title(post_title)
+#     form = CommentForm()
+#     if form.validate_on_submit():
+#         sender = form.sender.data
+#         date = datetime.utcnow()
+#         content = form.content.data
+#         blogpost_id = blogpost.id
+#         level = form.level.data
+#         new_comment = Comment(sender=sender, date=date, content=content, blogpost_id=blogpost_id, level=level)
+#         db.session.add(new_comment)
+#         db.session.commit()
+#         return redirect(url_for('read.html'), blogpost = blogpost)
+#     return render_template('read.html', blogpost = blogpost)
 
 
 @blog.route('/add', methods=['GET', 'POST'])
@@ -31,7 +50,9 @@ def add():
         date = datetime.utcnow()
         content = form.content.data
         imagePath = form.imagePath.data
-        # published = form.published.data
+        published = form.published.data
+        tags = form.tags.data
+        published = form.published.data
         new_post = BlogPost(title = title, date = date, content = content, imagePath = imagePath)
         db.session.add(new_post)
         db.session.commit()
@@ -52,6 +73,8 @@ def edit(post_id):
         form.title = request.form['title']
         form.imagePath = request.form['imagePath']
         form.content = request.form['content']
+        form.published = request.form.get('checkbox')
+        form.tags = request.form['tags']
         if form.validate_on_submit():
             form.populate_obj(blogpost)
             db.session.commit()
@@ -75,3 +98,9 @@ def delete(post_id):
     else:
         flash("Please confirm deleting the bookmark.")
     return  render_template('main.index', post_id=post_id)
+
+
+@blog.route('/tag/<name>')
+def tag(name):
+    tag = Tag.query.filter_by(name=name).first()
+    return render_template('tag.html', tag=tag, tags=Tag.all())

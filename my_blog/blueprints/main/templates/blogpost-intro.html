@@ -1,25 +1,31 @@
 <div class="card blogpost-intro container" >
   {% if current_user.is_authenticated %}
  <div class="edit-panel">
-     <a href="{{url_for('blog.edit', post_id=blogpost.id)}}">
+     <a href="{{url_for('blog.edit', post_id=blogpost.id)}}" type="button" class="btn btn-info">
        <svg class="icon">
          <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-edit') | replace('%23', '#')}}"></use>
-       </svg> edit
+       </svg> Edit
      </a>
-     <a href="#" data-toggle="modal" data-target="#deleteModal" >
+     <a href="#" data-toggle="modal" data-target="#deleteModal" type="button" class="btn btn-info">
        <svg class="icon">
          <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-trash') | replace('%23', '#')}}"></use>
-       </svg> delete
+       </svg> Delete
      </a>
+     <br>
  </div>
 
 {% include "delete_confirm.html"%}
-
  {% endif %}
+
   <div class="card-block blogpost-intro__content">
     <h4 class="card-title"><a class="blogpost-intro__title" href="{{url_for('blog.read', post_title=blogpost.title)}}">{{blogpost.title}}</a></h4>
     <img class="card-img-top blogpost-intro__picture" src="{{url_for('static', filename=blogpost.imagePath)}}" alt="Blogpost background image">
-    <p class="card-text blogpost-intro__text">{{blogpost.content}}</p>
-    <a href="{{url_for('blog.read', post_title=blogpost.title)}}" class="btn blogpost-intro__link">Read more...</a>
-  </div>
+    <div class="blogpost-intro__text">
+      <p class="card-text">{{blogpost.intro_content()}}</p>
+    </div>
+    <a href="{{url_for('blog.read', post_title=blogpost.title)}}" class="btn blogpost-intro__link">READ MORE...</a>
+    <div class="blogpost-intro__date">
+    <div class="blogpost-intro__date-value"><p>{{blogpost.formated_date()}}</p></div>
+    </div>
+    </div>
 </div>

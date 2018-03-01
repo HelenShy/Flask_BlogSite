@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 
-from my_blog.blueprints.blog.models import BlogPost
+from my_blog.blueprints.blog.models import BlogPost, Tag
 
 main = Blueprint('main', __name__, template_folder='templates')
 
@@ -11,7 +11,7 @@ def index():
 	"""
 	Generate main web page
 	"""
-	return render_template('home.html', blogposts = BlogPost.blogposts_page(1), pagenum = 1)
+	return render_template('home.html', blogposts = BlogPost.blogposts_page(1), pagenum = 1, tags = Tag.all())
 
 
 @main.route('/page/<pagenum>')
@@ -19,7 +19,7 @@ def page(pagenum):
 	"""
 	Generate selected page of the blog archive
 	"""
-	return render_template('home.html', blogposts = BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum)
+	return render_template('home.html', blogposts = BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum, tags = Tag.all())
 
 
 @main.app_errorhandler(403)

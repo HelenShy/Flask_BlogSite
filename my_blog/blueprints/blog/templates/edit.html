@@ -22,34 +22,45 @@
 </section> -->
 
 
-<section class="edit_post-form">
-<form action="" method="post">
-  <h1>{{form_title}}</h1>
-  {{form.hidden_tag()}}
-  <div class="form-group row">
-   <label class="col-sm-2 col-form-label">Title:</label>
-   <div class="col-sm-10">
-     <input type="text" name="title" class="form-control form-control-lg form-control-plaintext" value="{{ form.title.data| safe}}">
-   </div>
-  </div>
-  <div class="form-group row">
-   <label class="col-sm-2 col-form-label">Image path:</label>
-   <div class="col-sm-10">
-     <input type="text" name="imagePath" class="form-control form-control-lg form-control-plaintext" value="{{ form.imagePath.data | safe}}">
-   </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Content:</label>
-    <div class="col-sm-10" >
-    <textarea class="form-control" name="content" rows="25" >{{ form.content.data | safe}}</textarea>
-  </div>
-  </div>
-  <div class="form-group row edit_post-panel">
-    <button class="btn btn-lg btn-success btn-save_post" type="submit">Submit</button>
-    <a href="{{url_for('main.index')}}" class="btn btn-lg btn-primary btn-save_post" type="cancel">Cancel</a>
-  </div>
-</form>
-</section>
+  <section class="edit_post-form">
+    <form action="" method="post">
+      <h1>{{form_title}}</h1>
+      {{form.hidden_tag()}}
+      <div class="form-group row">
+         <label class="col-sm-2 col-form-label">Title:</label>
+         <div class="col-sm-10">
+           <input type="text" name="title" class="form-control form-control-lg form-control-plaintext" value="{{ form.title.data| safe}}">
+         </div>
+      </div>
+      <div class="form-group row">
+         <label class="col-sm-2 col-form-label">Image path:</label>
+         <div class="col-sm-10">
+           <input type="text" name="imagePath" class="form-control form-control-lg form-control-plaintext" value="{{ form.imagePath.data | safe}}">
+         </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Content:</label>
+        <div class="col-sm-10" >
+          <textarea class="form-control" name="content" rows="25" >{{ form.content.data | safe}}</textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+       <label class="col-sm-2 col-form-label">Tags:</label>
+       <div class="col-sm-10">
+         <input type="text" name="tags" class="form-control form-control-lg form-control-plaintext" value="{{ form.tags.data| safe}}">
+       </div>
+      </div>
+
+      <div class="form-group row edit_post-panel">
+        <div class="form-check">
+          <input type="checkbox" name="publish" class="form-check-input" id="checkPublish">
+          <label class="form-check-label" for="checkPublish">Publish</label>
+        </div>
+        <button class="btn btn-lg btn-success btn-save_post" type="submit">Submit</button>
+        <a href="{{url_for('main.index')}}" class="btn btn-lg btn-primary btn-save_post" type="cancel">Cancel</a>
+      </div>
+    </form>
+  </section>
 </div>
 {% endblock %}
 
