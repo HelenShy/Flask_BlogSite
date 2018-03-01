@@ -37,6 +37,14 @@
     </div>
 
 
+    {% if current_user.is_authenticated %}
+    <div class="row">
+      <div class="blogpost__edit col-md-offset-2 col-md-8 col-md-offset-2">
+      {% include "edit_post-panel.html" %}
+      </div>
+    </div>
+    {% endif %}
+
     {#<!-- <section class="Comments">
 
       {% include "comment_form.html"%}

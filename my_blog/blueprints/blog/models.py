@@ -37,7 +37,7 @@ class BlogPost(db.Model):
         return Markup(markdown(self.content))
 
     def intro_content(self):
-        return self.markup_content()[:100]
+        return self.markup_content()[:700]
 
     def formated_date(self):
         return "{0:%B %d, %Y}".format(self.date).upper()

@@ -259,9 +259,24 @@ header{
   margin-bottom: 2rem;
   text-align: right;
   transition: all 0.2s;
-
 }
 
+.btn-dark, .btn-dark:visited {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn-dark:hover,  .btn-dark:active{
+    background-color: #23272B;
+    border:1px solid #999C9F;
+    color:  #fff;
+}
+
+.btn-dark:active{
+  border:1px solid #999C9F;
+  color:#fff;
+}
 
 
 .icon{
@@ -320,7 +335,15 @@ header{
 
 .tag-header h1{
   font-size:3rem;
+  background: #888888;
+  color:#333;
+  text-align: center;
+  padding: 1rem;
+  text-transform: capitalize;
+
 }
+
+
 
  .blogpost__header{
    max-height: 60vh;
@@ -429,6 +452,14 @@ header{
   margin:5rem 0rem;
   text-align: right;
   font-size: 1.8rem;
+}
+
+.blogpost__edit .btn{
+  height:5rem;
+  width:10rem;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding:1.5rem;
 }
 
 /* ==========================================================================

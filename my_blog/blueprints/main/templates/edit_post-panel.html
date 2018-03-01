@@ -1,0 +1,18 @@
+{% if current_user.is_authenticated %}
+
+<div class="edit-panel">
+   <a href="{{url_for('blog.edit', post_id=blogpost.id)}}" type="button" class="btn btn-dark">
+     <svg class="icon">
+       <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-edit') | replace('%23', '#')}}"></use>
+     </svg> Edit
+   </a>
+   <a href="#" data-toggle="modal" data-target="#deleteModal" type="button" class="btn btn-dark">
+     <svg class="icon">
+       <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-trash') | replace('%23', '#')}}"></use>
+     </svg> Delete
+   </a>
+   <br>
+</div>
+
+{% include "delete_confirm.html"%}
+{% endif %}

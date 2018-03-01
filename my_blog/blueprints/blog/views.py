@@ -79,7 +79,7 @@ def edit(post_id):
             form.populate_obj(blogpost)
             db.session.commit()
             flash("Changes to blog post are stored")
-            return redirect(url_for('main.index'))
+            return redirect(url_for('blog.read', post_title=blogpost.title))
     return render_template('edit.html', form = form, form_title = 'Edit blog post')
 
 
