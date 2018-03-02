@@ -3,6 +3,7 @@ from sqlalchemy import desc
 from flask import Markup
 from markdown import markdown
 from datetime import tzinfo, timedelta, datetime
+from wtforms.validators import DataRequired
 
 tags = db.Table('blogpost_tag',
                 db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
@@ -17,7 +18,7 @@ class BlogPost(db.Model):
     imagePath = db.Column(db.String)
     published = db.Column(db.Boolean)
     _tags = db.relationship('Tag', secondary =tags, lazy ='joined', backref=db.backref('BlogPost', lazy='dynamic'))
-    # comments = db.relationship('Comment', backref = 'blogpost', lazy = 'dynamic')
+    comments = db.relationship('Comment', backref = 'blogpost', lazy = 'dynamic')
 
     def __repr__(self):
         return "<User(title='{%s}', date='{%s}', content='{%s[:100]}', imagePath ='{}')>".format(
@@ -77,16 +78,16 @@ class Tag(db.Model):
         return self.name
 
 
-# class Comment(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     sender = db.Column(db.String(128))
-#     date = db.Column(db.DateTime)
-#     content = db.Column(db.String(516))
-#     blogpost_id = db.Column('blogpost_id', db.Integer, db.ForeignKey(blogpost.id))
-#     level = db.Column(db.Integer)
-    #
-    # def markup_content(self):
-    #     return Markup(markdown(self.content))
-    #
-    # def formated_date(self):
-    #     return "{0:%B %d, %Y}".format(self.date).upper()
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender = db.Column(db.String(128))
+    date = db.Column(db.DateTime)
+    content = db.Column(db.String(516))
+    blogpost_id = db.Column(db.Integer, db.ForeignKey('blog_post.id'), nullable=False)
+    level = db.Column(db.Integer)
+
+    def markup_content(self):
+        return Markup(markdown(self.content))
+
+    def formated_date(self):
+        return "{0:%d.%m.%Y  %I:%M%p}".format(self.date).upper()

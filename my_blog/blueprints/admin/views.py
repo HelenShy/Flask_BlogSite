@@ -29,8 +29,8 @@ def login():
 			#return redirect(next or url_for('main.index'))
 			return redirect(request.args.get('next') or url_for('main.index'))
 		form.error = "Please enter valid user name and password"
-		render_template('login.html', form=form)
-	return render_template('login.html', form=form)
+		render_template('login_form.html', form=form)
+	return render_template('login_form.html', form=form)
 
 
 @admin.route('/logout', methods = ['POST', 'GET'])

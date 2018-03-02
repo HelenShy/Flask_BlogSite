@@ -2,39 +2,40 @@ from flask import Blueprint, render_template, flash, redirect,  url_for, abort, 
 from flask_login import login_required, current_user
 from datetime import datetime
 
-from .models import BlogPost, Tag
+from .models import BlogPost, Tag, Comment
 from my_blog.app import db
-from .forms import BlogPostForm
+from .forms import BlogPostForm, CommentForm
 
 blog = Blueprint('blog', __name__, template_folder='templates')
 
 
-@blog.route('/<post_title>')
-def read(post_title):
-    """
-    Generate page with selected blog post to read
-    """
-    blogpost = BlogPost.get_by_title(post_title)
-    return render_template('read.html', blogpost = blogpost)
-
-# @blog.route('/<post_title>', methods=['GET', 'POST'])
+# @blog.route('/<post_title>')
 # def read(post_title):
 #     """
 #     Generate page with selected blog post to read
 #     """
 #     blogpost = BlogPost.get_by_title(post_title)
-#     form = CommentForm()
-#     if form.validate_on_submit():
-#         sender = form.sender.data
-#         date = datetime.utcnow()
-#         content = form.content.data
-#         blogpost_id = blogpost.id
-#         level = form.level.data
-#         new_comment = Comment(sender=sender, date=date, content=content, blogpost_id=blogpost_id, level=level)
-#         db.session.add(new_comment)
-#         db.session.commit()
-#         return redirect(url_for('read.html'), blogpost = blogpost)
 #     return render_template('read.html', blogpost = blogpost)
+
+@blog.route('/<post_title>', methods=['GET', 'POST'])
+def read(post_title):
+    """
+    Generate page with selected blog post to read
+    """
+    blogpost = BlogPost.get_by_title(post_title)
+    form = CommentForm()
+    # form.validate_on_submit()
+    if request.method == 'POST':
+        sender = form.sender.data
+        date = datetime.utcnow()
+        content = form.content.data
+        blogpost_id = blogpost.id
+        level = 1
+        new_comment = Comment(sender=sender, date=date, content=content, blogpost_id=blogpost_id, level=level)
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('blog.read', post_title=blogpost.title))
+    return render_template('read.html', form = form, blogpost = blogpost)
 
 
 @blog.route('/add', methods=['GET', 'POST'])
@@ -58,7 +59,7 @@ def add():
         db.session.commit()
         flash("New post to blog was added")
         return redirect(url_for('main.index'))
-    return render_template('edit.html', form = form, form_title = 'Add a new blog post')
+    return render_template('edit_form.html', form = form, form_title = 'Add a new blog post')
 
 
 @blog.route('/edit/<int:post_id>', methods=['GET', 'POST'])
@@ -80,7 +81,7 @@ def edit(post_id):
             db.session.commit()
             flash("Changes to blog post are stored")
             return redirect(url_for('blog.read', post_title=blogpost.title))
-    return render_template('edit.html', form = form, form_title = 'Edit blog post')
+    return render_template('edit_form.html', form = form, form_title = 'Edit blog post')
 
 
 @blog.route('/delete/<int:post_id>', methods=['GET', 'POST'])

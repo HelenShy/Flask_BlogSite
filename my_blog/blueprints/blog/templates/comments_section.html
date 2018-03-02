@@ -1,0 +1,28 @@
+{% include "comment_form.html"%}
+
+<div class="row">
+  <div class="blogpost__comments col-md-offset-2 col-md-8 col-md-offset-2">
+    <h2>Comments({{blogpost.comments.count()}})</h2>
+
+    {% if blogpost.comments %}
+    {% for comment in blogpost.comments %}
+    <div class="comment">
+      <div class="row">
+        <div class="col-md-1">
+          <svg class="icon user_icon">
+            <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-user-circle-o') | replace('%23', '#')}}"></use>
+          </svg>
+        </div>
+        <div class="col-md-11">
+          <div class="comment__header">
+            <p class="comment__sender">{{comment.sender}}</p>
+            <p class="comment__date">{{comment.formated_date()}}</p>
+          </div>
+          <div class="comment__content"><p>{{comment.markup_content()}}</p></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
