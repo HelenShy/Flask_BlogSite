@@ -44,7 +44,7 @@
                     <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
                   </svg>
                   NEW POST</a>
-                <a class="navbar-item" href="{{url_for('admin.logout')}}">LOG OUT</a>
+                <a class="navbar-item" href="{{url_for('auth.logout')}}">LOG OUT</a>
                 </div>
                 {% endif %}
 

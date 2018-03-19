@@ -1,4 +1,4 @@
-from my_blog.app import  db
+from my_blog.app import db
 from sqlalchemy import desc
 from flask import Markup
 from markdown import markdown

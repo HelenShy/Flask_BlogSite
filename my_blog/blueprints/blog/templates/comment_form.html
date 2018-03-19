@@ -4,8 +4,21 @@
     <h2>LEAVE A COMMENT</h2>
     {{form.hidden_tag()}}
     <div class="form-group row">
-       <label class="col-sm-2 col-form-label">Name:</label>
-       <div class="col-sm-10">
+      <label class="col-sm-2 col-form-label">Log in with:</label>
+      <div class="col-sm-3">
+        {% macro show_provider_button(display_name) %}
+            <a href="{{ url_for(display_name + '.login') }}">
+              <img class='social_icon' src="{{url_for('static', filename='/img/' + display_name + '.png')}}" alt="{{display_name}}">
+            </a>
+        {% endmacro %}
+
+        {{ show_provider_button('facebook') }}
+        {{ show_provider_button('google') }}
+        {{ show_provider_button('twitter') }}
+      </div>
+
+       <label class="col-sm-1 col-form-label">Name:</label>
+       <div class="col-sm-6">
          <input type="text" name="sender" class="form-control form-control-lg form-control-plaintext" value="{{ form.sender.data | safe}}">
        </div>
     </div>
