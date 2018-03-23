@@ -367,8 +367,6 @@ header{
 
 }
 
-
-
  .blogpost__header{
    max-height: 60vh;
    display: block;
@@ -403,8 +401,6 @@ header{
   font-size:8rem;
   color:white;
 }
-
-
 
 .blogpost__picture:after{
   content: '';
@@ -608,6 +604,25 @@ header{
 
 .comment-form input:focus, .comment-form textarea:focus{
   box-shadow: inset 2px 3px 5px rgba( 0, 0, 0, 0.45 );
+}
+
+.form-logged-in-user{
+  text-align:left;
+  color: white;
+  font-size:2rem;
+}
+
+.btn-logout_social-profile__wrapper{
+  text-align:right;
+}
+
+.btn-logout_social-profile,
+.btn-logout_social-profile:visited{
+  color:#C7C7C7;
+}
+
+.btn-logout_social-profile:active{
+  color:white;
 }
 
 .btn-send_comment{

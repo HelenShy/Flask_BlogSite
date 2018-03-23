@@ -1,38 +1,58 @@
-<div class="row">
-<div class="col-md-offset-2 col-md-8">
-<form action="" method="post" class="comment-form">
-    <h2>LEAVE A COMMENT</h2>
-    {{form.hidden_tag()}}
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Log in with:</label>
-      <div class="col-sm-3">
-        {% macro show_provider_button(display_name) %}
-            <a href="{{ url_for(display_name + '.login') }}">
-              <img class='social_icon' src="{{url_for('static', filename='/img/' + display_name + '.png')}}" alt="{{display_name}}">
-            </a>
-        {% endmacro %}
+<div class="row" id="comment-form">
+  <div class="col-md-offset-2 col-md-8">
+    <form action="" method="post" class="comment-form">
+      <h2>LEAVE A COMMENT</h2>
+      {{form.hidden_tag()}}
+      <div class="form-group row">
 
-        {{ show_provider_button('facebook') }}
-        {{ show_provider_button('google') }}
-        {{ show_provider_button('twitter') }}
+        {% if session['current_profile'] %}
+          <label class="col-sm-2 col-form-label">Name:</label>
+          <div class="col-sm-6 form-logged-in-user">
+            {{ form.sender.data }}
+          </div>
+          <div class="col-sm-4 btn-logout_social-profile__wrapper">
+            <a class="btn btn-dark btn-logout_social-profile" href="{{ url_for('google.logout') }}">Logout from {{ oauth_provider }}</a>
+          </div>
+        {% else %}
+          <label class="col-sm-2 col-form-label">Log in with:</label>
+          <div class="col-sm-3">
+
+            {% macro show_provider_button(display_name) %}
+              <a href="{{ url_for( display_name + '.connect') }}">
+                <img class='social_icon' src="{{url_for('static', filename='/img/' + display_name + '.png')}}" alt="{{display_name}}">
+              </a>
+            {% endmacro %}
+
+            {{ show_provider_button('facebook') }}
+            {{ show_provider_button('google') }}
+            {{ show_provider_button('twitter') }}
+
+          </div>
+
+          <div class="form-group {% if form.sender.errors %} has-error {% endif %}">
+            <div class="col-sm-1 col-form-label">{{form.sender.label() | safe}}</div>
+            <div class="col-sm-6">
+              {{ form.sender(placeholder="", class="form-control", maxlength=128) | safe}}
+            </div>
+            <p class="col-sm-7 help-block">
+              {{ form.sender.errors[0] | safe}}
+          </div>
+        {% endif %}
+
       </div>
 
-       <label class="col-sm-1 col-form-label">Name:</label>
-       <div class="col-sm-6">
-         <input type="text" name="sender" class="form-control form-control-lg form-control-plaintext" value="{{ form.sender.data | safe}}">
+      <div class="form-group {% if form.content.errors %} has-error {% endif %}">
+         <div class="col-sm-2 col-form-label">{{form.content.label() | safe}}</div>
+         <div class="col-sm-10">
+           {{ form.content(placeholder="", class="form-control", rows='5', maxlength=516) | safe}}
+         </div>
+         <p class="col-sm-7 help-block">
+           {{ form.content.errors[0] | safe}}
        </div>
-    </div>
 
-    <div class="form-group row">
-      <label class="col-sm-2 col-form-label">Comment:</label>
-      <div class="col-sm-10" >
-        <textarea class="form-control" name="content" rows="5" >{{ form.content.data | safe}}</textarea>
+      <div class="form-group row edit_post-panel">
+        <button class="btn btn-lg btn-dark btn-send_comment" type="submit">Send</button>
       </div>
-    </div>
-
-    <div class="form-group row edit_post-panel">
-      <button class="btn btn-lg btn-dark btn-send_comment" type="submit">Send</button>
-    </div>
-</form>
-</div>
+    </form>
+  </div>
 </div>

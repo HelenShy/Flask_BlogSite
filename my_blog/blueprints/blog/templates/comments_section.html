@@ -9,9 +9,13 @@
     <div class="comment">
       <div class="row">
         <div class="col-md-1">
-          <svg class="icon user_icon">
-            <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-user-circle-o') | replace('%23', '#')}}"></use>
-          </svg>
+            {% if comment.picture_url %}
+              <img class="icon user_icon" src="{{comment.picture_url | replace('%23', '#')}}" alt="Photo">
+            {% else %}
+               <svg class="icon user_icon">
+                <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-user-circle-o') | replace('%23', '#')}}"></use>
+              </svg>
+            {% endif %}
         </div>
         <div class="col-md-11">
           <div class="comment__header">

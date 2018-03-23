@@ -10,6 +10,7 @@ tags = db.Table('blogpost_tag',
                 db.Column('blogpost_id', db.Integer, db.ForeignKey('blog_post.id'))
 )
 
+
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
@@ -17,8 +18,8 @@ class BlogPost(db.Model):
     content = db.Column(db.String)
     imagePath = db.Column(db.String)
     published = db.Column(db.Boolean)
-    _tags = db.relationship('Tag', secondary =tags, lazy ='joined', backref=db.backref('BlogPost', lazy='dynamic'))
-    comments = db.relationship('Comment', backref = 'blogpost', lazy = 'dynamic')
+    _tags = db.relationship('Tag', secondary=tags, lazy='joined', backref=db.backref('BlogPost', lazy='dynamic'))
+    comments = db.relationship('Comment', backref='blogpost', lazy='dynamic')
 
     def __repr__(self):
         return "<User(title='{%s}', date='{%s}', content='{%s[:100]}', imagePath ='{}')>".format(
@@ -26,13 +27,16 @@ class BlogPost(db.Model):
 
     @staticmethod
     def get_by_title(title):
-        title = title.replace('%20', ' ')
+        title = title.replace('-', ' ')
         return BlogPost.query.filter_by(title=title).first()
 
     @staticmethod
     def blogposts_page(pagenum):
-        blogposts = BlogPost.query.order_by(desc(BlogPost.id)).paginate(pagenum, 2 ,error_out=False)
+        blogposts = BlogPost.query.order_by(desc(BlogPost.id)).paginate(pagenum, 2, error_out=False)
         return blogposts
+
+    def title_url(self):
+        return self.title.replace(' ', '-')
 
     def markup_content(self):
         return Markup(markdown(self.content))
@@ -61,7 +65,7 @@ class Tag(db.Model):
 
     @property
     def blogposts(self):
-        return self.BlogPost.paginate(1, 2 ,error_out=False)
+        return self.BlogPost.paginate(1, 2, error_out=False)
 
     @staticmethod
     def get_or_create(name):
@@ -81,6 +85,7 @@ class Tag(db.Model):
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sender = db.Column(db.String(128))
+    picture_url = db.Column(db.String(128))
     date = db.Column(db.DateTime)
     content = db.Column(db.String(516))
     blogpost_id = db.Column(db.Integer, db.ForeignKey('blog_post.id'), nullable=False)
