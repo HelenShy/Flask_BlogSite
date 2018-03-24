@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, session, jsonify, request
+from flask import render_template, redirect, url_for, session, jsonify, request, flash, Blueprint
 from flask_dance.contrib.facebook import make_facebook_blueprint, facebook
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 from flask_dance.contrib.google import make_google_blueprint, google
@@ -35,7 +35,7 @@ profile_google = make_google_blueprint(
 
 @profile_google.route("/google/auth")
 def connect():
-    #del session['google_oauth_token']
+    # del session['google_oauth_token']
     page_referrer = request.referrer
     if not google.authorized:
         return redirect(url_for("google.login"))
@@ -45,15 +45,6 @@ def connect():
                                   picture_url="{val}".format(val=resp.json()['picture']))
     session['current_profile'] = current_profile.to_json()
     return redirect(page_referrer)
-
-
-@profile_google.route("/logout")
-def logout():
-    del session['current_profile']
-    return redirect(request.referrer)
-
-
-
 
 
 profile_twitter = make_twitter_blueprint(
@@ -73,3 +64,13 @@ def connect():
                                   picture_url="{val}".format(val=resp.json()['picture']))
     session['current_profile'] = current_profile.to_json()
     return redirect(page_referrer)
+
+
+profile = Blueprint('profile', __name__, template_folder='templates')
+
+
+@profile.route("/logout")
+def logout():
+    del session['current_profile']
+    flash("You have logged out")
+    return redirect(request.referrer)

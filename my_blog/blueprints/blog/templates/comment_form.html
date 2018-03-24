@@ -11,7 +11,7 @@
             {{ form.sender.data }}
           </div>
           <div class="col-sm-4 btn-logout_social-profile__wrapper">
-            <a class="btn btn-dark btn-logout_social-profile" href="{{ url_for('google.logout') }}">Logout from {{ oauth_provider }}</a>
+            <a class="btn btn-dark btn-logout_social-profile" href="{{ url_for('profile.logout') }}">Logout from {{ oauth_provider }}</a>
           </div>
         {% else %}
           <label class="col-sm-2 col-form-label">Log in with:</label>

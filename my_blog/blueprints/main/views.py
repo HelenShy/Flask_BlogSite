@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, url_for
 
 from my_blog.blueprints.blog.models import BlogPost, Tag
+from .models import quote_list
 
 main = Blueprint('main', __name__, template_folder='templates')
 
@@ -12,7 +13,8 @@ def index():
     Generate main web page
     :return:
     """
-    return render_template('home.html', blogposts = BlogPost.blogposts_page(1), pagenum = 1, tags = Tag.all())
+    quote = quote_list.random_quote()
+    return render_template('home.html', blogposts=BlogPost.blogposts_page(1), pagenum=1, tags=Tag.all(), quote=quote)
 
 
 @main.route('/page/<pagenum>')
@@ -22,7 +24,7 @@ def page(pagenum):
     :param pagenum:
     :return:
     """
-    return render_template('home.html', blogposts = BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum, tags = Tag.all())
+    return render_template('home.html', blogposts=BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum, tags=Tag.all())
 
 
 @main.app_errorhandler(403)

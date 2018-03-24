@@ -45,6 +45,9 @@ def create_app():
     from my_blog.blueprints.social_profile import profile_twitter as twitter_blueprint
     app.register_blueprint(twitter_blueprint, url_prefix='/profile')
 
+    from my_blog.blueprints.social_profile import profile
+    app.register_blueprint(profile, url_prefix='/profile')
+
     return app
 
 
