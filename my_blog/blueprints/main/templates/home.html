@@ -1,19 +1,20 @@
 {% extends "base.html" %}
 
 {% block header %}
-<div class="header--mainpage"
+<div class="header--mainpage">
   <div class="bg_video">
     <video class="bg_video__content" autoplay muted loop>
       <source src="{{ url_for('static', filename='img/video.mp4') }}" >
     </video>
 
   </div>
-  <div class="header__intro">
-    <div id="Intro">DevNotes
-      <div id="SubIntro">Dev`s blog. Quick start to technologies</div>
-    </div>
+</div>
+<div class="header__intro">
+  <div id="Intro">DevNotes
+    <div id="SubIntro">Dev`s blog. Quick start to technologies</div>
   </div>
 </div>
+
 
 <nav class="navbar" role="navigation">
   <div class="container">
@@ -24,7 +25,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-item" href="#">HOME</a>
+      <a class="navbar-item active" href="#">HOME</a>
       <a class="navbar-item" href="#">ABOUT</a>
       {% if current_user.is_authenticated %}
       <div class="navbar-admin">
@@ -32,7 +33,11 @@
         <svg class="icon">
           <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
         </svg>
-        NEW POST</a>
+        NEW POST
+      </a>
+      <a class="navbar-item" href="{{url_for('admin.blogposts_panel')}}">
+        ADMIN
+      </a>
       <a class="navbar-item" href="{{url_for('auth.logout')}}">LOG OUT</a>
       </div>
       {% endif %}

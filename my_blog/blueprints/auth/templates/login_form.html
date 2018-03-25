@@ -1,36 +1,32 @@
 {% extends "base.html" %}
 
-  {% block content %}
+{% block content %}
 
   <section class="login-section">
-  <div >
-  <form action="" method="post" class="login-form col-md-8" >
-      <h1>Log In</h1>
-    {{form.hidden_tag()}}
-    <div class="form-group">
-      <!-- <label for="inputUserName">User name</label> -->
-      <input type="text" name="userName" class="form-control form-control-lg" id="inputUsername"  placeholder="Enter user name">
+    <div >
+      <form action="" method="post" class="login-form col-md-8" >
+          <h1>Log In</h1>
+        {{form.hidden_tag()}}
+        <div class="form-group">
+          <input type="text" name="userName" class="form-control form-control-lg" id="inputUsername"  placeholder="Enter user name">
+        </div>
+        <div class="form-group">
+          <input type="password" name ="password" class="form-control form-control-lg" id="inputPassword" placeholder="Password">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" name="rememberMe" class="form-check-input" id="checkRememberMe">
+          <label class="form-check-label" for="checkRememberMe">Remember me</label>
+        </div>
+        {% if form.error %}
+        <div class="error">
+          <p>{{form.error}}</p>
+        </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-    <div class="form-group">
-      <!-- <label for="inputPassword">Password</label> -->
-      <input type="password" name ="password" class="form-control form-control-lg" id="inputPassword" placeholder="Password">
-    </div>
-    <div class="form-check">
-      <input type="checkbox" name="rememberMe" class="form-check-input" id="checkRememberMe">
-      <label class="form-check-label" for="checkRememberMe">Remember me</label>
-    </div>
-    {% if form.error %}
-    <div class="error">
-      <p>{{form.error}}</p>
-    </div>
-    {% endif %}
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  </div>
   </section>
-  {% endblock %}
-
-
+{% endblock %}
 
 {% block sidebar %}
 {% endblock %}

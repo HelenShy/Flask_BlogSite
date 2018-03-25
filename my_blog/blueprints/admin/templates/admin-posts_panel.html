@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <div class="header--standard">
+    <nav class="navbar" role="navigation">
+      <a class="navbar__logo" href="{{url_for('main.index')}}">DevNotes</a>
+      <div class="navbar-main">
+        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button> -->
+
+        <a class="navbar-item" href="{{url_for('main.index')}}">HOME</a>
+        <a class="navbar-item" href="#">ABOUT</a>
+
+        {% if current_user.is_authenticated %}
+          <div class="navbar-admin">
+          <a class="navbar-item" href="{{url_for('blog.add')}}">
+            <svg class="icon">
+              <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
+            </svg>
+            NEW POST
+          </a>
+          <a class="navbar-item active" href="{{url_for('admin.blogposts_panel')}}">
+            ADMIN
+          </a>
+          <a class="navbar-item" href="{{url_for('auth.logout')}}">LOG OUT</a>
+          </div>
+        {% endif %}
+
+      </div>
+
+        <!--/.navbar-collapse -->
+    </nav>
+  </div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-2 admin-panel">
+  <ul class="nav flex-column">
+    <li class="nav-item active ">
+      <a class="nav-link active " href="#">Articles ({{ blogposts_qty}})</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('admin.comments_panel') }}">Comments ({{ comments_qty }})</a>
+    </li>
+  </ul>
+</div>
+<div class="col-md-10">
+  <h1>
+    Blogposts
+  </h1>
+  {% if blogposts %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Date</th>
+          <th scope="col">Published</th>
+          <th scope="col">Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for blogpost in blogposts %}
+          <tr>
+            <th scope="row">{{blogpost.id}}</th>
+            <td><a href="{{url_for('blog.read', post_title=blogpost.title_url())}}">{{blogpost.title}}</a></td>
+            <td>{{blogpost.formated_date()}}</td>
+            <td>{{blogpost.published}}</td>
+            <td>{{blogpost.comments.count()}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>There is no posts yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
+
+
+{% block sidebar %}
+{% endblock %}

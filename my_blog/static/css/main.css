@@ -18,6 +18,18 @@ header{
     margin-bottom: 1rem;
 }
 
+header{
+  min-height:10vh;
+}
+
+.main-container{
+  min-height:80vh;
+}
+
+.footer{
+  min-height:10vh;
+}
+
 /* ==========================================================================
    Header  custom styles
    ========================================================================== */
@@ -77,7 +89,7 @@ header{
      top:40%;
      left:10%;
      text-align: left;
-     color:#FFFFFF;
+     color:white;
      font-size:7rem;
 
      /* background-color: #FFFFFF;
@@ -114,7 +126,7 @@ header{
   z-index: 50;
   margin-bottom: 0;
   vertical-align: middle;
-  padding:2rem;
+  padding:1rem;
 }
 
 .navbar-main, .navbar-admin{
@@ -137,6 +149,11 @@ header{
   color: white;
   font-size: 1.5rem;
   letter-spacing: 2px;
+}
+
+.navbar-main a.navbar-item.active{
+ color:#FF5733;
+ cursor:default;
 }
 
 .navbar-item:hover,
@@ -174,6 +191,30 @@ header{
   color:white;
   text-shadow: none;
   transform: translateY(1px);
+}
+
+/* ==========================================================================
+   Admin page styles
+   ========================================================================== */
+
+.admin-panel a,
+.admin-panel a:active,
+.admin-panel a:hover{
+ color:#333333;
+ text-decoration:none;
+}
+
+.admin-panel a.active,
+.admin-panel .nav-item.active,
+.nav>li>a.active:hover
+{
+  cursor:default;
+  font-weight:bold;
+  background:#DDDDDD;
+}
+
+.admin-panel li{
+  border-bottom:1px #DDDDDD solid;
 }
 
 /* ==========================================================================

@@ -24,7 +24,7 @@ class QuoteList:
         Returns random quote selected from text file
         :return: random quote
         """
-        q = self.quote_list[randint(1, 100)]
+        q = self.quote_list[randint(0, 99)]
         random_quote = Quote(quote_id=q[:q.find('.')],
                              content=q[(q.find('.') + 2):q.find('~')],
                              author=q[q.find('~')+1:])

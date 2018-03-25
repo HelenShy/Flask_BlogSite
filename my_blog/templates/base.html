@@ -1,112 +1,114 @@
 <!doctype html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>DevNotes</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png')}}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DevNotes</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png')}}">
 
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css')}}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-theme.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 
-        <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>a
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <header class="header">
-          {% block header %}
-          <div class="header--standard">
-            <nav class="navbar" role="navigation">
-              <a class="navbar__logo" href="{{url_for('main.index')}}">DevNotes</a>
-              <div class="navbar-main">
-                <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button> -->
+    <script src="{{ url_for('static', filename='js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <header class="header">
+      {% block header %}
+        <div class="header--standard">
+          <nav class="navbar" role="navigation">
+            <a class="navbar__logo" href="{{url_for('main.index')}}">DevNotes</a>
+            <div class="navbar-main">
+              <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button> -->
 
-                <a class="navbar-item" href="{{url_for('main.index')}}">HOME</a>
-                <a class="navbar-item" href="#">ABOUT</a>
+              <a class="navbar-item" href="{{url_for('main.index')}}">HOME</a>
+              <a class="navbar-item" href="#">ABOUT</a>
 
-                {% if current_user.is_authenticated %}
+              {% if current_user.is_authenticated %}
                 <div class="navbar-admin">
                 <a class="navbar-item" href="{{url_for('blog.add')}}">
                   <svg class="icon">
                     <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-new-message') | replace('%23', '#')}}"></use>
                   </svg>
-                  NEW POST</a>
+                  NEW POST
+                </a>
+                <a class="navbar-item" href="{{url_for('admin.blogposts_panel')}}">
+                  ADMIN
+                </a>
                 <a class="navbar-item" href="{{url_for('auth.logout')}}">LOG OUT</a>
                 </div>
-                {% endif %}
+              {% endif %}
 
-              </div>
+            </div>
 
-                <!--/.navbar-collapse -->
-            </nav>
-          </div>
-          {% endblock %}
-        </header>
+              <!--/.navbar-collapse -->
+          </nav>
+        </div>
+      {% endblock %}
+    </header>
 
 
 
-        <!-- Container with main-column and sidebar starts-->
-        <div class="container">
-          <div class="row">
+    <!-- Container with main-column and sidebar starts-->
+    <div class="container main-container">
+      <div class="row">
 
-            {% block content %}
-            <div class="col-md-9 ">
-              <div class="main-column">
-                <div class="container blog-posts">
-                {% with blogposts = blogposts %}
-                {% include "blog.html"%}
-                {% endwith %}
-                </div>
+        {% block content %}
+          <div class="col-md-9 ">
+            <div class="main-column">
+              <div class="container blog-posts">
+              {% with blogposts = blogposts %}
+              {% include "blog.html"%}
+              {% endwith %}
               </div>
             </div>
-            {% endblock %}
-
-            {% block sidebar %}
-            <aside class="col-md-3">
-              <div class="sidebar">
-                <div class="tags container">
-                  <h2>TAGS</h2>
-                  {% if tags %}
-                    {% for tag in tags %}
-                    <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
-                    {% endfor %}
-                  {% endif %}
-
-                </div>
-                <div class="blockquote container">
-                  <blockquote>
-                    <p>{{ quote.content }}</p>
-                    <footer> <cite title="Source Title">{{ quote.author }}</cite></footer>
-                  </blockquote>
-                </div>
-              </div>
-            {% endblock %}
-
-          </aside>
           </div>
-          <!-- Container with main-column and sidebar ends-->
+        {% endblock %}
+
+        {% block sidebar %}
+          <aside class="col-md-3">
+            <div class="sidebar">
+              <div class="tags container">
+                <h2>TAGS</h2>
+                {% if tags %}
+                  {% for tag in tags %}
+                    <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+              <div class="blockquote container">
+                <blockquote>
+                  <p>{{ quote.content }}</p>
+                  <footer> <cite title="Source Title">{{ quote.author }}</cite></footer>
+                </blockquote>
+              </div>
+            </div>
+          </aside>
+        {% endblock %}
+
+      </div>
+      <!-- Container with main-column and sidebar ends-->
 
     </div> <!-- /container -->
-    <footer class="footer">
-      <div class="Copyright">
-        <p>&copy; Copyright © 2018 DevNotes</p>
-      </div>
-    </footer>
+  </body>
+  <footer class="footer">
+    <div class="Copyright">
+      <p>&copy; Copyright © 2018 DevNotes</p>
+    </div>
+  </footer>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-        <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js')}}"></script>
 
-        <script src="{{ url_for('static', filename='js/main.js')}}"></script>
-
-    </body>
+  <script src="{{ url_for('static', filename='js/main.js')}}"></script>
 </html>

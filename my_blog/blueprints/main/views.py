@@ -24,7 +24,8 @@ def page(pagenum):
     :param pagenum:
     :return:
     """
-    return render_template('home.html', blogposts=BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum, tags=Tag.all())
+    quote = quote_list.random_quote()
+    return render_template('home.html', blogposts=BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum, tags=Tag.all(), quote=quote)
 
 
 @main.app_errorhandler(403)

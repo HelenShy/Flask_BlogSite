@@ -8,7 +8,7 @@ from .url import is_safe_url
 auth = Blueprint('auth', __name__, template_folder='templates')
 
 
-@auth.route('/login', methods = ['POST', 'GET'])
+@auth.route('/login', methods=['POST', 'GET'])
 def login():
     """
     Login and validate the user

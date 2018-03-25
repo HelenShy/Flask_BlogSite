@@ -31,6 +31,14 @@ class BlogPost(db.Model):
         return BlogPost.query.filter_by(title=title).first()
 
     @staticmethod
+    def get_by_id(post_id):
+        return BlogPost.query.get(post_id)
+
+    @staticmethod
+    def get_all():
+        return BlogPost.query.all()
+
+    @staticmethod
     def blogposts_page(pagenum):
         blogposts = BlogPost.query.order_by(desc(BlogPost.id)).paginate(pagenum, 2, error_out=False)
         return blogposts
@@ -90,6 +98,13 @@ class Comment(db.Model):
     content = db.Column(db.String(516))
     blogpost_id = db.Column(db.Integer, db.ForeignKey('blog_post.id'), nullable=False)
     level = db.Column(db.Integer)
+
+    @staticmethod
+    def get_all():
+        return Comment.query.all()
+
+    def get_blogpost(self):
+        return BlogPost.get_by_id(self.blogpost_id)
 
     def markup_content(self):
         return Markup(markdown(self.content))

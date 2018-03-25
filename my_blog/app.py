@@ -31,7 +31,7 @@ def create_app():
     app.register_blueprint(main_blueprint)
 
     from my_blog.blueprints.auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)  # url_prefix='/admin'
+    app.register_blueprint(auth_blueprint)
 
     from my_blog.blueprints.blog import blog as blog_blueprint
     app.register_blueprint(blog_blueprint, url_prefix='/blog')
@@ -47,6 +47,9 @@ def create_app():
 
     from my_blog.blueprints.social_profile import profile
     app.register_blueprint(profile, url_prefix='/profile')
+
+    from my_blog.blueprints.admin import admin
+    app.register_blueprint(admin, url_prefix='/admin')
 
     return app
 
