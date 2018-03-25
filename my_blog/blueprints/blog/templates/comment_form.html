@@ -18,7 +18,7 @@
           <div class="col-sm-3">
 
             {% macro show_provider_button(display_name) %}
-              <a href="{{ url_for( display_name + '.connect') }}">
+              <a href="{{ url_for(display_name + '.connect_' + display_name) }}">
                 <img class='social_icon' src="{{url_for('static', filename='/img/' + display_name + '.png')}}" alt="{{display_name}}">
               </a>
             {% endmacro %}

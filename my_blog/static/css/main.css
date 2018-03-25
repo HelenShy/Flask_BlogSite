@@ -164,6 +164,7 @@ header{
 }
 
 .navbar__logo, .navbar__logo:active{
+  padding:1rem;
   font-family:  Oswald, "Helvetica Neue", Arial, Helvetica, Verdana, sans-serif;
   display:inline-block;
   text-align: left;

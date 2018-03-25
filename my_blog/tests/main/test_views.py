@@ -1,5 +1,6 @@
 from flask import url_for
 
+
 class TestMain():
     def test_main_page(self, client):
         """

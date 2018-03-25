@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, flash, redirect,  url_for, abort, request, session
-from flask_login import login_required, current_user
+from flask import Blueprint, render_template, flash, redirect,  \
+    url_for, request, session
+from flask_login import login_required
 from datetime import datetime
 import json
 
@@ -21,7 +22,8 @@ def read(post_title):
     blogpost = BlogPost.get_by_title(post_title)
     form = CommentForm()
     if 'current_profile' in session:
-        user_profile = json.loads(session['current_profile'], object_hook=UserProfile.deserialize)
+        user_profile = json.loads(session['current_profile'],
+                                  object_hook=UserProfile.deserialize)
         form.sender.data = user_profile.name
         picture_url = user_profile.picture_url
         oauth_provider = user_profile.oauth_provider
@@ -35,12 +37,20 @@ def read(post_title):
             content = form.content.data
             blogpost_id = blogpost.id
             level = 1
-            new_comment = Comment(sender=sender, picture_url=picture_url, date=date,
-                                  content=content, blogpost_id=blogpost_id, level=level)
+            new_comment = Comment(sender=sender,
+                                  picture_url=picture_url,
+                                  date=date,
+                                  content=content,
+                                  blogpost_id=blogpost_id,
+                                  level=level)
             db.session.add(new_comment)
             db.session.commit()
             return redirect(url_for('blog.read', post_title=post_title))
-    return render_template('read.html', form=form, blogpost=blogpost, picture_url=picture_url, oauth_provider=oauth_provider)
+    return render_template('read.html',
+                           form=form,
+                           blogpost=blogpost,
+                           picture_url=picture_url,
+                           oauth_provider=oauth_provider)
 
 
 @blog.route('/add', methods=['GET', 'POST'])
@@ -58,12 +68,19 @@ def add():
         imagePath = form.imagePath.data
         published = form.published.data
         tags = form.tags.data
-        new_post = BlogPost(title=title, date=date, content=content, imagePath=imagePath)
+        new_post = BlogPost(title=title,
+                            date=date,
+                            content=content,
+                            published=published,
+                            tags=tags,
+                            imagePath=imagePath)
         db.session.add(new_post)
         db.session.commit()
         flash("New post to blog was added")
         return redirect(url_for('main.index'))
-    return render_template('edit_form.html', form=form, form_title='Add a new blog post')
+    return render_template('edit_form.html',
+                           form=form,
+                           form_title='Add a new blog post')
 
 
 @blog.route('/edit/<int:post_id>', methods=['GET', 'POST'])
@@ -84,8 +101,11 @@ def edit(post_id):
             form.populate_obj(blogpost)
             db.session.commit()
             flash("Changes to blog post are stored")
-            return redirect(url_for('blog.read', post_title=blogpost.title))
-    return render_template('edit_form.html', form=form, form_title='Edit blog post')
+            return redirect(url_for('blog.read',
+                                    post_title=blogpost.title))
+    return render_template('edit_form.html',
+                           form=form,
+                           form_title='Edit blog post')
 
 
 @blog.route('/delete/<int:post_id>', methods=['GET', 'POST'])
@@ -99,7 +119,10 @@ def delete(post_id):
         db.session.delete(blogpost)
         db.session.commit()
         flash("Deleted")
-        return redirect(url_for('main.index', blogposts=BlogPost.blogposts_page(1), pagenum=1, user="admin"))
+        return redirect(url_for('main.index',
+                                blogposts=BlogPost.blogposts_page(1),
+                                pagenum=1,
+                                ser="admin"))
     else:
         flash("Please confirm deleting the bookmark.")
     return render_template('main.index', post_id=post_id)
@@ -109,4 +132,7 @@ def delete(post_id):
 def tag(name):
     tag = Tag.query.filter_by(name=name).first()
     quote = quote_list.random_quote()
-    return render_template('tag.html', tag=tag, tags=Tag.all(), quote=quote)
+    return render_template('tag.html',
+                           tag=tag,
+                           tags=Tag.all(),
+                           quote=quote)

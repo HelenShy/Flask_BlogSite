@@ -2,13 +2,12 @@ from my_blog.app import db
 from sqlalchemy import desc
 from flask import Markup
 from markdown import markdown
-from datetime import tzinfo, timedelta, datetime
-from wtforms.validators import DataRequired
 
 tags = db.Table('blogpost_tag',
-                db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
-                db.Column('blogpost_id', db.Integer, db.ForeignKey('blog_post.id'))
-)
+                db.Column('tag_id', db.Integer,
+                          db.ForeignKey('tag.id')),
+                db.Column('blogpost_id', db.Integer,
+                          db.ForeignKey('blog_post.id')))
 
 
 class BlogPost(db.Model):
@@ -18,12 +17,21 @@ class BlogPost(db.Model):
     content = db.Column(db.String)
     imagePath = db.Column(db.String)
     published = db.Column(db.Boolean)
-    _tags = db.relationship('Tag', secondary=tags, lazy='joined', backref=db.backref('BlogPost', lazy='dynamic'))
-    comments = db.relationship('Comment', backref='blogpost', lazy='dynamic')
+    _tags = db.relationship('Tag',
+                            secondary=tags,
+                            lazy='joined',
+                            backref=db.backref('BlogPost',
+                                               lazy='dynamic'))
+    comments = db.relationship('Comment',
+                               backref='blogpost',
+                               lazy='dynamic')
 
     def __repr__(self):
-        return "<User(title='{%s}', date='{%s}', content='{%s[:100]}', imagePath ='{}')>".format(
-                             self.title, self.date, self.content, self.imagePath)
+        return "<User(title='{%s}', " \
+               "date='{%s}', " \
+               "content='{%s[:100]}', " \
+               "imagePath ='{}')>".\
+            format(self.title, self.date, self.content, self.imagePath)
 
     @staticmethod
     def get_by_title(title):
@@ -40,7 +48,10 @@ class BlogPost(db.Model):
 
     @staticmethod
     def blogposts_page(pagenum):
-        blogposts = BlogPost.query.order_by(desc(BlogPost.id)).paginate(pagenum, 2, error_out=False)
+        blogposts = BlogPost.query\
+            .filter_by(published=True)\
+            .order_by(desc(BlogPost.id))\
+            .paginate(pagenum, 2, error_out=False)
         return blogposts
 
     def title_url(self):
@@ -62,7 +73,8 @@ class BlogPost(db.Model):
     @tags.setter
     def tags(self, string):
         if string:
-            self._tags = [Tag.get_or_create(tag) for tag in string.split(',')]
+            self._tags = [Tag.get_or_create(tag)
+                          for tag in string.split(',')]
         else:
             self._tags = []
 
@@ -77,10 +89,7 @@ class Tag(db.Model):
 
     @staticmethod
     def get_or_create(name):
-        try:
-            return Tag.query.filter_by(name=name).one()
-        except:
-            return Tag(name=name)
+        return Tag.query.filter_by(name=name).one()
 
     @staticmethod
     def all():
@@ -96,7 +105,8 @@ class Comment(db.Model):
     picture_url = db.Column(db.String(128))
     date = db.Column(db.DateTime)
     content = db.Column(db.String(516))
-    blogpost_id = db.Column(db.Integer, db.ForeignKey('blog_post.id'), nullable=False)
+    blogpost_id = db.Column(db.Integer, db.ForeignKey('blog_post.id'),
+                            nullable=False)
     level = db.Column(db.Integer)
 
     @staticmethod

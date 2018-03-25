@@ -2,16 +2,17 @@ import pytest
 
 from my_blog.app import create_app
 
+
 @pytest.yield_fixture(scope="session")
 def app():
     """
-    Setup falsk test application
+    Setup flask test application
 
     :return: Flask app
     """
     params = {
-        'DEBUG':False,
-        'TESTING':True
+        'DEBUG': False,
+        'TESTING': True
     }
 
     _app = create_app(settings_override=params)

@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, flash, request, abort, redirect, url_for
-from flask_login import login_required, current_user, login_user, logout_user
+from flask import Blueprint, render_template, flash, request, redirect, url_for
+from flask_login import login_required, login_user, logout_user
 
 from .models import User
 from .forms import LoginForm
-from .url import is_safe_url
+# from .url import is_safe_url
 
 auth = Blueprint('auth', __name__, template_folder='templates')
 
@@ -23,7 +23,6 @@ def login():
         if user is not None and user.check_password(form.password):
             login_user(user)
             flash('Logged in successfully.')
-            next = request.args.get('next')
             # if not is_safe_url(next):
             #  	return abort(400)
             # #return redirect(next or url_for('main.index'))

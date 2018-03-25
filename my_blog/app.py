@@ -1,9 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.contrib.fixers import ProxyFix
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from flask_talisman import Talisman
+from flask_login import LoginManager
+# from flask_talisman import Talisman
 from flask_debugtoolbar import DebugToolbarExtension
+
+# from my_blog.blueprints.auth.models import User
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -19,7 +21,8 @@ def create_app():
 
     :return: Flask app
     """
-    app = Flask(__name__, instance_relative_config=True, static_url_path='', static_folder='static')
+    app = Flask(__name__, instance_relative_config=True,
+                static_url_path='', static_folder='static')
     app.wsgi_app = ProxyFix(app.wsgi_app)
     app.config.from_object('config.settings')
     db.init_app(app)
@@ -36,14 +39,14 @@ def create_app():
     from my_blog.blueprints.blog import blog as blog_blueprint
     app.register_blueprint(blog_blueprint, url_prefix='/blog')
 
-    from my_blog.blueprints.social_profile import profile_fb as fb_blueprint
-    app.register_blueprint(fb_blueprint, url_prefix='/profile')
+    from my_blog.blueprints.social_profile import profile_fb
+    app.register_blueprint(profile_fb, url_prefix='/profile')
 
-    from my_blog.blueprints.social_profile import profile_google as google_blueprint
-    app.register_blueprint(google_blueprint, url_prefix='/profile')
+    from my_blog.blueprints.social_profile import profile_google
+    app.register_blueprint(profile_google, url_prefix='/profile')
 
-    from my_blog.blueprints.social_profile import profile_twitter as twitter_blueprint
-    app.register_blueprint(twitter_blueprint, url_prefix='/profile')
+    from my_blog.blueprints.social_profile import profile_twitter
+    app.register_blueprint(profile_twitter, url_prefix='/profile')
 
     from my_blog.blueprints.social_profile import profile
     app.register_blueprint(profile, url_prefix='/profile')

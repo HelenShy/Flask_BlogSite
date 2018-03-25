@@ -2,6 +2,7 @@ from flask_login import UserMixin
 from my_blog.app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
@@ -22,7 +23,6 @@ class User(db.Model, UserMixin):
     @staticmethod
     def get_by_username(username):
         return User.query.filter_by(username=username).first()
-
 
     def __repr__(self):
         return "User '{}'".format(self.username)

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for
+from flask import Blueprint, render_template
 
 from my_blog.blueprints.blog.models import BlogPost, Tag
 from .models import quote_list
@@ -14,7 +14,11 @@ def index():
     :return:
     """
     quote = quote_list.random_quote()
-    return render_template('home.html', blogposts=BlogPost.blogposts_page(1), pagenum=1, tags=Tag.all(), quote=quote)
+    return render_template('home.html',
+                           blogposts=BlogPost.blogposts_page(1),
+                           pagenum=1,
+                           tags=Tag.all(),
+                           quote=quote)
 
 
 @main.route('/page/<pagenum>')
@@ -25,11 +29,15 @@ def page(pagenum):
     :return:
     """
     quote = quote_list.random_quote()
-    return render_template('home.html', blogposts=BlogPost.blogposts_page(int(pagenum)), pagenum=pagenum, tags=Tag.all(), quote=quote)
+    return render_template('home.html',
+                           blogposts=BlogPost.blogposts_page(int(pagenum)),
+                           pagenum=pagenum,
+                           tags=Tag.all(),
+                           quote=quote)
 
 
 @main.app_errorhandler(403)
-def page_not_found(e):
+def page_not_found_403(e):
     """
     Generate error pagenum
     :return: page with error 403
@@ -38,7 +46,7 @@ def page_not_found(e):
 
 
 @main.app_errorhandler(404)
-def page_not_found(e):
+def page_not_found_404(e):
     """
     Generate error pagenum
     :return: page with error 404
