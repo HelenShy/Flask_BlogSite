@@ -5,23 +5,17 @@ from wtforms.validators import DataRequired
 
 
 class BlogPostForm(Form):
-    title = StringField("BlogPost title",
-                        validators=[DataRequired()],
-                        default="")
-    published = BooleanField("Select whether post should be published",
-                             default="")
-    imagePath = StringField(label='The url for post background image:',
+    title = StringField("BlogPost title", validators=[DataRequired()])
+    published = BooleanField("Publish", default="")
+    imagePath = StringField(label='Background image url:',
                             validators=[DataRequired()], default="")
-    content = TextAreaField("BlogPost content",
-                            validators=[DataRequired()], default="")
+    content = TextAreaField("Post content", validators=[DataRequired()])
     tags = StringField("Tags", default="")
 
 
 class CommentForm(Form):
     sender = StringField("Name:",
-                         validators=[DataRequired(
-                             'Please provide a valid name')])
+                         validators=[DataRequired('Please provide a valid name')])
     content = TextAreaField("Comment:",
-                            validators=[DataRequired(
-                                'Please fill the comment field')])
+                            validators=[DataRequired('Please fill the comment field')])
     level = IntegerField("Comment level")

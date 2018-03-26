@@ -60,6 +60,21 @@
 
     <!-- Container with main-column and sidebar starts-->
     <div class="container main-container">
+
+      <div id="flashes" >
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li>
+                <div class="{{ category }}">{{ message }}</div>
+              </li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+      </div>
+
       <div class="row">
 
         {% block content %}
@@ -111,4 +126,5 @@
   <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js')}}"></script>
 
   <script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
 </html>

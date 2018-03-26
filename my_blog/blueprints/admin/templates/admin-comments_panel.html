@@ -68,7 +68,7 @@
           <tr>
             <th scope="row">{{ comment.id }}</th>
             <td>{{ comment.sender }}</td>
-            <td><a href="{{url_for('blog.read', post_title=comment.get_blogpost().title_url())}}">{{ comment.get_blogpost().title }}</a></td>
+            <td><a href="{{url_for('blog.read', post_title=comment.get_blogpost().url)}}">{{ comment.get_blogpost().title }}</a></td>
             <td>{{ comment.content }}</td>
             <td>{{ comment.formated_date() }}</td>
           </tr>

@@ -67,7 +67,7 @@
         {% for blogpost in blogposts %}
           <tr>
             <th scope="row">{{blogpost.id}}</th>
-            <td><a href="{{url_for('blog.read', post_title=blogpost.title_url())}}">{{blogpost.title}}</a></td>
+            <td><a href="{{url_for('blog.read', post_title=blogpost.url)}}">{{blogpost.title}}</a></td>
             <td>{{blogpost.formated_date()}}</td>
             <td>{{blogpost.published}}</td>
             <td>{{blogpost.comments.count()}}</td>

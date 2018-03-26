@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import current_user
 
 from my_blog.blueprints.blog.models import BlogPost, Tag
 from .models import quote_list
@@ -14,11 +15,12 @@ def index():
     :return:
     """
     quote = quote_list.random_quote()
-    return render_template('home.html',
-                           blogposts=BlogPost.blogposts_page(1),
-                           pagenum=1,
-                           tags=Tag.all(),
-                           quote=quote)
+    if current_user.is_authenticated:
+        blogposts = BlogPost.blogposts_page(1)
+    else:
+        blogposts = BlogPost.published_blogposts_page(1)
+    return render_template('home.html', blogposts=blogposts, pagenum=1,
+                           tags=Tag.all(), quote=quote)
 
 
 @main.route('/page/<pagenum>')
@@ -29,11 +31,12 @@ def page(pagenum):
     :return:
     """
     quote = quote_list.random_quote()
-    return render_template('home.html',
-                           blogposts=BlogPost.blogposts_page(int(pagenum)),
-                           pagenum=pagenum,
-                           tags=Tag.all(),
-                           quote=quote)
+    if current_user.is_authenticated:
+        blogposts = BlogPost.blogposts_page(int(pagenum))
+    else:
+        blogposts = BlogPost.published_blogposts_page(int(pagenum))
+    return render_template('home.html', blogposts=blogposts, pagenum=pagenum,
+                           tags=Tag.all(), quote=quote)
 
 
 @main.app_errorhandler(403)

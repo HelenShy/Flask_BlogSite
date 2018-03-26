@@ -39,4 +39,5 @@ def logout():
     Logout the user
     """
     logout_user()
+    flash('User logged out.')
     return redirect(url_for('main.index'))

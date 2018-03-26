@@ -14,12 +14,12 @@ from my_blog.blueprints.main.models import quote_list
 blog = Blueprint('blog', __name__, template_folder='templates')
 
 
-@blog.route('/<post_title>', methods=['GET', 'POST'])
-def read(post_title):
+@blog.route('/<post_url>', methods=['GET', 'POST'])
+def read(post_url):
     """
     Generate page with selected blog post to read
     """
-    blogpost = BlogPost.get_by_title(post_title)
+    blogpost = BlogPost.get_by_title(post_url)
     form = CommentForm()
     if 'current_profile' in session:
         user_profile = json.loads(session['current_profile'],
@@ -45,7 +45,7 @@ def read(post_title):
                                   level=level)
             db.session.add(new_comment)
             db.session.commit()
-            return redirect(url_for('blog.read', post_title=post_title))
+            return redirect(url_for('blog.read', post_url=post_url))
     return render_template('read.html',
                            form=form,
                            blogpost=blogpost,
@@ -102,7 +102,7 @@ def edit(post_id):
             db.session.commit()
             flash("Changes to blog post are stored")
             return redirect(url_for('blog.read',
-                                    post_title=blogpost.title))
+                                    post_url=blogpost.url))
     return render_template('edit_form.html',
                            form=form,
                            form_title='Edit blog post')
@@ -118,13 +118,12 @@ def delete(post_id):
     if request.method == "POST":
         db.session.delete(blogpost)
         db.session.commit()
-        flash("Deleted")
+        flash("Post was deleted.")
         return redirect(url_for('main.index',
                                 blogposts=BlogPost.blogposts_page(1),
-                                pagenum=1,
-                                ser="admin"))
+                                pagenum=1))
     else:
-        flash("Please confirm deleting the bookmark.")
+        flash("Please confirm deleting the post.")
     return render_template('main.index', post_id=post_id)
 
 
@@ -132,7 +131,4 @@ def delete(post_id):
 def tag(name):
     tag = Tag.query.filter_by(name=name).first()
     quote = quote_list.random_quote()
-    return render_template('tag.html',
-                           tag=tag,
-                           tags=Tag.all(),
-                           quote=quote)
+    return render_template('tag.html', tag=tag, tags=Tag.all(), quote=quote)

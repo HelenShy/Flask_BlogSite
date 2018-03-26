@@ -1,7 +1,9 @@
-from my_blog.app import db
 from sqlalchemy import desc
 from flask import Markup
 from markdown import markdown
+import re
+
+from my_blog.app import db
 
 tags = db.Table('blogpost_tag',
                 db.Column('tag_id', db.Integer,
@@ -12,11 +14,12 @@ tags = db.Table('blogpost_tag',
 
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(128))
+    _title = db.Column(db.String(128))
     date = db.Column(db.DateTime)
     content = db.Column(db.String)
     imagePath = db.Column(db.String)
     published = db.Column(db.Boolean)
+    url = db.Column(db.String(128))
     _tags = db.relationship('Tag',
                             secondary=tags,
                             lazy='joined',
@@ -27,16 +30,11 @@ class BlogPost(db.Model):
                                lazy='dynamic')
 
     def __repr__(self):
-        return "<User(title='{%s}', " \
-               "date='{%s}', " \
-               "content='{%s[:100]}', " \
-               "imagePath ='{}')>".\
-            format(self.title, self.date, self.content, self.imagePath)
+        return self.title
 
     @staticmethod
     def get_by_title(title):
-        title = title.replace('-', ' ')
-        return BlogPost.query.filter_by(title=title).first()
+        return BlogPost.query.filter_by(url=title).first()
 
     @staticmethod
     def get_by_id(post_id):
@@ -47,15 +45,19 @@ class BlogPost(db.Model):
         return BlogPost.query.all()
 
     @staticmethod
-    def blogposts_page(pagenum):
+    def published_blogposts_page(pagenum):
         blogposts = BlogPost.query\
             .filter_by(published=True)\
             .order_by(desc(BlogPost.id))\
             .paginate(pagenum, 2, error_out=False)
         return blogposts
 
-    def title_url(self):
-        return self.title.replace(' ', '-')
+    @staticmethod
+    def blogposts_page(pagenum):
+        blogposts = BlogPost.query\
+            .order_by(desc(BlogPost.id))\
+            .paginate(pagenum, 2, error_out=False)
+        return blogposts
 
     def markup_content(self):
         return Markup(markdown(self.content))
@@ -65,6 +67,15 @@ class BlogPost(db.Model):
 
     def formated_date(self):
         return "{0:%B %d, %Y}".format(self.date).upper()
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, string):
+        self._title = string
+        self.url = (re.sub('[^0-9a-zA-Z ]+', '', string)).replace(' ', '-')
 
     @property
     def tags(self):
