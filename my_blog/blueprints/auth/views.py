@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, request, redirect, url_for
+from flask import Blueprint, render_template, flash, request, redirect, url_for, session
 from flask_login import login_required, login_user, logout_user
 
 from .models import User
@@ -28,7 +28,6 @@ def login():
             # #return redirect(next or url_for('main.index'))
             return redirect(request.args.get('next') or url_for('main.index'))
         form.error = "Please enter valid user name and password"
-        render_template('login_form.html', form=form)
     return render_template('login_form.html', form=form)
 
 

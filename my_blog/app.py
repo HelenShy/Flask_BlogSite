@@ -15,7 +15,7 @@ login_manager.login_view = "auth.login"
 toolbar = DebugToolbarExtension()
 
 
-def create_app():
+def create_app(settings_override=None):
     """
     Create a Flask application using the app factory pattern.
 
@@ -29,6 +29,9 @@ def create_app():
     login_manager.init_app(app)
     toolbar.init_app(app)
     # Talisman(app)
+
+    if settings_override:
+        app.config.update(settings_override)
 
     from my_blog.blueprints.main import main as main_blueprint
     app.register_blueprint(main_blueprint)

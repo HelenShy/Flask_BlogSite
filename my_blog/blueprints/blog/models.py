@@ -2,6 +2,7 @@ from sqlalchemy import desc
 from flask import Markup
 from markdown import markdown
 import re
+from sqlalchemy.orm.exc import NoResultFound
 
 from my_blog.app import db
 
@@ -100,7 +101,10 @@ class Tag(db.Model):
 
     @staticmethod
     def get_or_create(name):
-        return Tag.query.filter_by(name=name).one()
+        try:
+            return Tag.query.filter_by(name=name).one()
+        except NoResultFound:
+            return Tag(name=name)
 
     @staticmethod
     def all():

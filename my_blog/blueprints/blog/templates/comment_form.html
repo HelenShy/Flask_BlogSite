@@ -1,8 +1,9 @@
 <div class="row" id="comment-form">
   <div class="col-md-offset-2 col-md-8">
     <form action="" method="post" class="comment-form">
+      {{ form.hidden_tag() }}
       <h2>LEAVE A COMMENT</h2>
-      {{form.hidden_tag()}}
+
       <div class="form-group row">
 
         {% if session['current_profile'] %}

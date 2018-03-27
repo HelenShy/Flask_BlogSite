@@ -11,5 +11,5 @@ def cli(path):
     :param path: Test coverage path
     :return: Subprocess call result
     """
-    cmd = 'py.test --cov-report term-missing --cov {0}'.format(path)
-    return subprocess.call(cmd)
+    cmd = 'py.test --cov-config .coveragerc --cov-report term-missing --cov {0}'.format(path)
+    return subprocess.call(cmd, shell=True)

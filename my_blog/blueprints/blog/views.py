@@ -60,24 +60,25 @@ def add():
     Generate page where new post for blog can be created
     """
     form = BlogPostForm()
-    if form.validate_on_submit():
-        title = form.title.data
-        # if (form.published.data):
-        date = datetime.utcnow()
-        content = form.content.data
-        imagePath = form.imagePath.data
-        published = form.published.data
-        tags = form.tags.data
-        new_post = BlogPost(title=title,
-                            date=date,
-                            content=content,
-                            published=published,
-                            tags=tags,
-                            imagePath=imagePath)
-        db.session.add(new_post)
-        db.session.commit()
-        flash("New post to blog was added")
-        return redirect(url_for('main.index'))
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            title = form.title.data
+            # if (form.published.data):
+            date = datetime.utcnow()
+            content = form.content.data
+            imagePath = form.imagePath.data
+            published = form.published.data
+            tags = form.tags.data
+            new_post = BlogPost(title=title,
+                                date=date,
+                                content=content,
+                                published=published,
+                                tags=tags,
+                                imagePath=imagePath)
+            db.session.add(new_post)
+            db.session.commit()
+            flash("New post to blog was added")
+            return redirect(url_for('main.index'))
     return render_template('edit_form.html',
                            form=form,
                            form_title='Add a new blog post')
@@ -124,7 +125,7 @@ def delete(post_id):
                                 pagenum=1))
     else:
         flash("Please confirm deleting the post.")
-    return render_template('main.index', post_id=post_id)
+    return redirect(url_for('main.index'))
 
 
 @blog.route('/tag/<name>')
