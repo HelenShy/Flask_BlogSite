@@ -5,7 +5,9 @@
 
   <div class="card-block blogpost-intro__content">
     <h4 class="card-title"><a class="blogpost-intro__title" href="{{url_for('blog.read', post_url=blogpost.url)}}">{{blogpost.title}}</a></h4>
-    <img class="card-img-top blogpost-intro__picture" src="{{url_for('static', filename=blogpost.imagePath)}}" alt="Blogpost background image">
+    {% if blogpost.imagePath %}
+      <img class="card-img-top blogpost-intro__picture" src="{{url_for('static', filename=blogpost.imagePath)}}" alt="Blogpost background image">
+    {% endif %}
     <div class="blogpost-intro__text">
       <p class="card-text">{{blogpost.intro_content()}}</p>
     </div>

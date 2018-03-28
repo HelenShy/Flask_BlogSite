@@ -96,7 +96,7 @@
                 <h2>TAGS</h2>
                 {% if tags %}
                   {% for tag in tags %}
-                    <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
+                    <div class="tag"><a href="{{url_for('main.tag', name=tag.name)}}">{{tag}}</a></div>
                   {% endfor %}
                 {% endif %}
               </div>

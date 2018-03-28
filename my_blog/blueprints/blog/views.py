@@ -8,7 +8,6 @@ from .models import BlogPost, Tag, Comment
 from my_blog.app import db
 from .forms import BlogPostForm, CommentForm
 from my_blog.blueprints.social_profile.models import UserProfile
-from my_blog.blueprints.main.models import quote_list
 
 
 blog = Blueprint('blog', __name__, template_folder='templates')
@@ -127,9 +126,3 @@ def delete(post_id):
         flash("Please confirm deleting the post.")
     return redirect(url_for('main.index'))
 
-
-@blog.route('/tag/<name>')
-def tag(name):
-    tag = Tag.query.filter_by(name=name).first()
-    quote = quote_list.random_quote()
-    return render_template('tag.html', tag=tag, tags=Tag.all(), quote=quote)

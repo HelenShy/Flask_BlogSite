@@ -10,13 +10,6 @@ class TestPage(object):
         response = client.get(url_for('blog.read', post_url='To-selfdoubting-developers-are-you-good-enough'))
         assert response.status_code == 200
 
-    def test_tag_page(self, client):
-        """
-        Test that tag page response is 200
-        """
-        response = client.get(url_for('blog.tag', name='git'))
-        assert response.status_code == 200
-
 
 class TestAuthorized(ViewTestMixin):
     def test_blog_add_blogpost(self):

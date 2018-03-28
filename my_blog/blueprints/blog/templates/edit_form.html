@@ -7,33 +7,45 @@
     <form action="" method="post">
       {{ form.hidden_tag() }}
       <h1>{{form_title}}</h1>
-      <div class="form-group row">
-         <label class="col-sm-2 col-form-label">Title:</label>
+
+      <div class="form-group row {% if form.title.errors %} has-error {% endif %}">
+         <div class="col-sm-2 col-form-label">{{form.title.label() | safe}}</div>
          <div class="col-sm-10">
-           <input type="text" name="title" class="form-control form-control-lg form-control-plaintext" value="{{ form.title.data| safe}}">
+           {{ form.title(placeholder="", class="form-control", maxlength=128) | safe}}
          </div>
-      </div>
-      <div class="form-group row">
-         <label class="col-sm-2 col-form-label">Image path:</label>
-         <div class="col-sm-10">
-           <input type="text" name="imagePath" class="form-control form-control-lg form-control-plaintext" value="{{ form.imagePath.data | safe}}">
-         </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Content:</label>
-        <div class="col-sm-10" >
-          <textarea class="form-control" name="content" rows="25" >{{ form.content.data | safe}}</textarea>
-        </div>
-      </div>
-      <div class="form-group row">
-       <label class="col-sm-2 col-form-label">Tags:</label>
-       <div class="col-sm-10">
-         <input type="text" name="tags" class="form-control form-control-lg form-control-plaintext" value="{{ form.tags.data| safe}}">
+         <p class="col-sm-7 help-block">
+           {{ form.title.errors[0] | safe}}
        </div>
-      </div>
+
+      <div class="form-group row {% if form.imagePath.errors %} has-error {% endif %}">
+         <div class="col-sm-2 col-form-label">{{form.imagePath.label() | safe}}</div>
+         <div class="col-sm-10">
+           {{ form.imagePath(placeholder="", class="form-control", maxlength=128) | safe}}
+         </div>
+         <p class="col-sm-7 help-block">
+           {{ form.imagePath.errors[0] | safe}}
+       </div>
+
+      <div class="form-group row {% if form.content.errors %} has-error {% endif %}">
+         <div class="col-sm-2 col-form-label">{{form.content.label() | safe}}</div>
+         <div class="col-sm-10">
+           {{ form.content(placeholder="", class="form-control", rows='25', maxlength=516) | safe}}
+         </div>
+         <p class="col-sm-7 help-block">
+           {{ form.content.errors[0] | safe}}
+       </div>
+
+      <div class="form-group row {% if form.tags.errors %} has-error {% endif %}">
+         <div class="col-sm-2 col-form-label">{{form.tags.label() | safe}}</div>
+         <div class="col-sm-10">
+           {{ form.tags(placeholder="", class="form-control", maxlength=128) | safe}}
+         </div>
+         <p class="col-sm-7 help-block">
+           {{ form.tags.errors[0] | safe}}
+       </div>
 
       <div class="form-group edit_post-panel">
-        <div class="col-form-label"> {{ form.published | safe}} Published </div>
+        <div class="col-form-label"> {{ form.published | safe}} Publish </div>
       </div>
 
       <div class="form-group row edit_post-panel">

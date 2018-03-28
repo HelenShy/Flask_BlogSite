@@ -1,19 +1,19 @@
 {% from "pagination_macros.html" import pagination %}
 
 {% if  blogposts.total > 0 %}
-{% for blogpost in blogposts.items %}
+  {% for blogpost in blogposts.items %}
 
-{% with blogpost = blogpost %}
-{% include "blogpost-intro.html"%}
-{% endwith %}
+    {% with blogpost = blogpost %}
+      {% include "blogpost-intro.html"%}
+    {% endwith %}
 
-{% endfor %}
+  {% endfor %}
 
 {% else %}
-No posts yet.
+  No posts yet.
 {% endif %}
 
 
-  <nav class="Page_navigation" aria-label="Page navigation">
-{{ pagination(blogposts) }}
+<nav class="Page_navigation" aria-label="Page navigation">
+  {{ pagination(blogposts, tag) }}
 </nav>

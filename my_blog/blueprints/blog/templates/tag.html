@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "pagination_macros.html" import pagination %}
 
 {% block content %}
 
@@ -6,17 +7,15 @@
 <div class="col-md-9 ">
   <div class="main-column">
     <div class="tag-header">
-    <h1>{{tag.name}}</h1>
+    <h1>{{tag}}</h1>
     </div>
-    {% if tag.BlogPost.count() >0 %}
+
     <div class="container blog-posts">
-    {% with blogposts = tag.blogposts %}
     {% include "blog.html"%}
-    {% endwith %}
     </div>
-    {% else %}
-    <p>There are no Blogposts.</p>
-    {% endif %}
+
   </div>
 </div>
+
 {% endblock %}
+

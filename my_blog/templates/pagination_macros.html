@@ -1,7 +1,16 @@
-{% macro pagination(blogposts) %}
+{% macro pagination(blogposts, tag) %}
+
+{% macro url(page) %}
+  {% if tag %}
+    {{ url_for('main.tag_page', name=tag, pagenum=page) }}
+  {% else %}
+    {{ url_for('main.page', pagenum=page) }}
+  {% endif %}
+{% endmacro %}
+
   <ul class="pagination">
     {% if blogposts.has_prev %}
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=blogposts.prev_num)}}">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="{{url(blogposts.prev_num)}}">Previous</a></li>
     {% endif %}
 
     {% for page in blogposts.iter_pages() %}
@@ -9,13 +18,13 @@
           {% if page == blogposts.page  %}
           <li class="page-item active" ><a class="page-link" href="#">{{blogposts.page}}<span class="sr-only">(current)</span></a></li>
           {% else %}
-          <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=page)}}">{{page}}</a></li>
+          <li class="page-item"><a class="page-link" href="{{url(page)}}">{{page}}</a></li>
           {% endif %}
         {% endif %}
       {% endfor %}
 
     {% if blogposts.has_next %}
-    <li class="page-item"><a class="page-link" href="{{url_for('main.page', pagenum=blogposts.next_num)}}">Next</a></li>
+    <li class="page-item"><a class="page-link" href="{{url(blogposts.next_num)}}">Next</a></li>
     {% endif %}
   </ul>
 {% endmacro %}

@@ -1,4 +1,5 @@
 {
+  "my_blog/tests/blog/test_views.py::TestPage::()::test_tag_page": true,
   "my_blog/tests/main/test_views.py::TestMain::()::test_main_page": true,
   "my_blog/tests/main/test_views.py::TestPage::()::test_403_page": true,
   "my_blog/tests/main/test_views.py::TestPage::()::test_login": true,

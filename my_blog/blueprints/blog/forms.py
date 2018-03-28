@@ -5,11 +5,10 @@ from wtforms.validators import DataRequired
 
 
 class BlogPostForm(FlaskForm):
-    title = StringField("BlogPost title", validators=[DataRequired()])
+    title = StringField("Title", validators=[DataRequired()])
     published = BooleanField("Publish", default="")
-    imagePath = StringField(label='Background image url:',
-                            validators=[DataRequired()], default="")
-    content = TextAreaField("Post content", validators=[DataRequired()])
+    imagePath = StringField(label='Background image url:')
+    content = TextAreaField("Content", validators=[DataRequired()])
     tags = StringField("Tags", default="")
 
 

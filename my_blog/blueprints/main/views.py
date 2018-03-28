@@ -20,7 +20,7 @@ def index():
     else:
         blogposts = BlogPost.published_blogposts_page(1)
     return render_template('home.html', blogposts=blogposts, pagenum=1,
-                           tags=Tag.all(), quote=quote)
+                           tags=Tag.all(), quote=quote, tag=None)
 
 
 @main.route('/page/<pagenum>')
@@ -35,8 +35,24 @@ def page(pagenum):
         blogposts = BlogPost.blogposts_page(int(pagenum))
     else:
         blogposts = BlogPost.published_blogposts_page(int(pagenum))
-    return render_template('home.html', blogposts=blogposts, pagenum=pagenum,
-                           tags=Tag.all(), quote=quote)
+    return render_template('home.html', blogposts=blogposts, pagenum=pagenum, tags=Tag.all(), quote=quote, tag=None)
+
+
+@main.route('/tag/<name>')
+def tag(name):
+    return tag_page(name, 1)
+
+
+@main.route('/tag/<name>/<pagenum>')
+def tag_page(name, pagenum):
+    selected_tag = Tag.query.filter_by(name=name).first()
+    quote = quote_list.random_quote()
+    if current_user.is_authenticated:
+        blogposts = selected_tag.blogposts(int(pagenum))
+    else:
+        blogposts = selected_tag.blogposts_published(int(pagenum))
+    return render_template('tag.html', tag=selected_tag.name, tags=Tag.all(), quote=quote, blogposts=blogposts,
+                           pagenum=pagenum)
 
 
 @main.app_errorhandler(403)
