@@ -4,9 +4,15 @@
 
   <div class="main-column">
 
+      {% if blogpost.imagePath %}
+      {% set image_path = blogpost.imagePath %}
+      {% else %}
+      {% set image_path = '/img/black.jpg' %}
+      {% endif %}
+
     <div class="blogpost__header">
       <figure class="blogpost__picture">
-        <img src="{{url_for('static', filename=blogpost.imagePath)}}" class="figure-img img-fluid rounded" alt="Blogpost background image">
+        <img src="{{url_for('static', filename=image_path)}}" class="figure-img img-fluid rounded" alt="Blogpost background image">
       </figure>
       <div class="blogpost__title"><h1 >{{blogpost.title}}</h1></div>
     </div>
@@ -23,9 +29,11 @@
         <svg class="icon">
           <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-price-tags') | replace('%23', '#')}}"></use>
         </svg>
-        {% for tag in blogpost._tags %}
-          <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
-        {% endfor %}
+        {% if  blogpost._tags.items %}
+          {% for tag in blogpost._tags %}
+            <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
+          {% endfor %}
+        {% endif %}
       </div>
     </div>
     {% endif %}

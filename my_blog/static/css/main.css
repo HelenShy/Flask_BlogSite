@@ -368,7 +368,7 @@ header{
   width: 100%;
   background: #333333;
   overflow: hidden;
-  clip-path:polygon(0 0, 40% 0, 35% 50%, 40% 100%, 0 100%);
+  clip-path:polygon(0 0, 45% 0, 40% 50%, 45% 100%, 0 100%);
   color: white;
 }
 
@@ -396,7 +396,9 @@ header{
   transition: all 0.2s;
 }
 
-.btn-dark, .btn-dark:visited {
+.btn-dark,
+.btn-dark:focus,
+.btn-dark:visited {
     color: #fff;
     background-color: #343a40;
     border-color: #343a40;
@@ -591,6 +593,10 @@ header{
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
   padding:1.5rem;
+}
+
+.file_list{
+margin:3rem 0rem;
 }
 
 /* ==========================================================================

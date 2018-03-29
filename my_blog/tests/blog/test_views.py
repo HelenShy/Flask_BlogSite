@@ -21,7 +21,7 @@ class TestAuthorized(ViewTestMixin):
                         'imagePath': 'test_path', 'tags': 'one,two'}
 
         response = self.client.post(url_for('blog.add'), data=blogpost, follow_redirects=True)
-        assert response.status_code == 200
+        assert_status_with_message(200, response, 'New post to blog was added')
 
     def test_blog_edit_blogpost(self):
         """
@@ -32,7 +32,7 @@ class TestAuthorized(ViewTestMixin):
                     'imagePath': 'test_path', 'tags': ''}
 
         response = self.client.post(url_for('blog.edit', post_id=6), data=blogpost, follow_redirects=True)
-        assert response.status_code == 200
+        assert_status_with_message(200, response, 'Changes to blog post are stored')
 
     def test_blog_delete_blogpost_get_message(self):
         """
@@ -66,4 +66,4 @@ class TestAuthorized(ViewTestMixin):
         comment = {'sender': 'test', 'content': 'testing...'}
         response = self.client.post(url_for('blog.read', post_url='To-selfdoubting-developers-are-you-good-enough'),
                                     data=comment, follow_redirects=True)
-        assert response.status_code == 200
+        assert_status_with_message(200, response, 'New comment was added successfully')

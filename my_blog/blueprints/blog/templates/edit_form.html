@@ -4,7 +4,7 @@
 {% block content %}
 <div class="main-column">
   <section class="edit_post-form">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       {{ form.hidden_tag() }}
       <h1>{{form_title}}</h1>
 
@@ -47,6 +47,25 @@
       <div class="form-group edit_post-panel">
         <div class="col-form-label"> {{ form.published | safe}} Publish </div>
       </div>
+
+
+      <input id="upload_img" name="images_save"  type="file" multiple >
+
+       {% if files.__len__() >0 %}
+      <br>
+          <div class="file_list">
+            <div>
+              <label>Uploaded images. Check to DELETE</label>
+            </div>
+            {% for file in files %}
+              <div class="row" >
+                <div class="col-sm-1"><input value="{{file}}" name="images_delete" type="checkbox"></div>
+                <div class="col-sm-2"><img src="{{url_for('static', filename='img/' + post_id + '/' + file )}}" style="width:100%"></div>
+                <div class="col-sm-6">{{file}}</div>
+              </div>
+            {% endfor %}
+          </div>
+      {% endif %}
 
       <div class="form-group row edit_post-panel">
         <button class="btn btn-lg btn-success btn-save_post" type="submit">Submit</button>

@@ -5,6 +5,7 @@ from flask_login import LoginManager
 # from flask_talisman import Talisman
 from flask_debugtoolbar import DebugToolbarExtension
 
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 # from my_blog.blueprints.auth.models import User
 
 db = SQLAlchemy()
@@ -56,6 +57,10 @@ def create_app(settings_override=None):
 
     from my_blog.blueprints.admin import admin
     app.register_blueprint(admin, url_prefix='/admin')
+
+    app.config['UPLOADED_IMAGES_DEST'] = '/var/uploads'
+    images = UploadSet('images', IMAGES)
+    configure_uploads(app, (images,))
 
     return app
 

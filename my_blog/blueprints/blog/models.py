@@ -34,8 +34,11 @@ class BlogPost(db.Model):
         return self.title
 
     @staticmethod
+    def get_by_url(url):
+        return BlogPost.query.filter_by(url=url).first()
+
     def get_by_title(title):
-        return BlogPost.query.filter_by(url=title).first()
+        return BlogPost.query.filter_by(_title=title).first()
 
     @staticmethod
     def get_by_id(post_id):
