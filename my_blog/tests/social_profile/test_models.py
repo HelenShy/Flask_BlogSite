@@ -11,9 +11,12 @@ class TestModel(object):
         Tests to_json() and deserialize() methods of object UserProfile
         :return: True if properties of deserialized object match original one`s
         """
-        profile = UserProfile(name='test', oauth_provider='google', picture_url='path')
+        profile = UserProfile(name='test',
+                              oauth_provider='google',
+                              picture_url='path')
         profile_json = profile.to_json()
-        deserialized_profile = json.loads(profile_json, object_hook=UserProfile.deserialize)
+        deserialized_profile = json.loads(profile_json,
+                                          object_hook=UserProfile.deserialize)
         assert 'test' in deserialized_profile.name
         assert 'google' in deserialized_profile.oauth_provider
         assert 'path' in deserialized_profile.picture_url

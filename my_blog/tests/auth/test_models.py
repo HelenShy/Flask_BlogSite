@@ -10,9 +10,11 @@ class TestModel(object):
         Test that password getter is non-accessible
         :return: True if password getter is non-accessible
         """
-        user = User(id=1, username='Test', email='test@mail.ru', password_hash='password')
+        user = User(id=1, username='Test', email='test@mail.ru',
+                    password_hash='password')
         try:
             x = user.password
+            print(x)
             assert False
         except AttributeError:
             assert True

@@ -3,12 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="84646fb1-4827-4b10-bcb2-0175debdf038" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/lastfailed" />
+      <change beforePath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" />
       <change beforePath="$PROJECT_DIR$/my_blog.db" afterPath="$PROJECT_DIR$/my_blog.db" />
+      <change beforePath="$PROJECT_DIR$/my_blog/app.py" afterPath="$PROJECT_DIR$/my_blog/app.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/auth/views.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/auth/views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/blog/forms.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/blog/forms.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/blog/models.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/blog/models.py" />
       <change beforePath="$PROJECT_DIR$/my_blog/blueprints/blog/templates/comment_form.html" afterPath="$PROJECT_DIR$/my_blog/blueprints/blog/templates/comment_form.html" />
-      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/blog/templates/read.html" afterPath="$PROJECT_DIR$/my_blog/blueprints/blog/templates/read.html" />
-      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/main/templates/home.html" afterPath="$PROJECT_DIR$/my_blog/blueprints/main/templates/home.html" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/blog/views.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/blog/views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/main/views.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/main/views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/social_profile/__init__.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/social_profile/__init__.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/blueprints/social_profile/views.py" afterPath="$PROJECT_DIR$/my_blog/blueprints/social_profile/views.py" />
       <change beforePath="$PROJECT_DIR$/my_blog/static/css/main.css" afterPath="$PROJECT_DIR$/my_blog/static/css/main.css" />
-      <change beforePath="$PROJECT_DIR$/my_blog/templates/base.html" afterPath="$PROJECT_DIR$/my_blog/templates/base.html" />
+      <change beforePath="$PROJECT_DIR$/my_blog/static/img/github.png" afterPath="$PROJECT_DIR$/my_blog/static/img/github.png" />
+      <change beforePath="$PROJECT_DIR$/my_blog/static/img/twitter.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/admin/test_views.py" afterPath="$PROJECT_DIR$/my_blog/tests/admin/test_views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/auth/test_models.py" afterPath="$PROJECT_DIR$/my_blog/tests/auth/test_models.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/auth/test_views.py" afterPath="$PROJECT_DIR$/my_blog/tests/auth/test_views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/blog/test_views.py" afterPath="$PROJECT_DIR$/my_blog/tests/blog/test_views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/conftest.py" afterPath="$PROJECT_DIR$/my_blog/tests/conftest.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/main/test_views.py" afterPath="$PROJECT_DIR$/my_blog/tests/main/test_views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/social_profile/test_models.py" afterPath="$PROJECT_DIR$/my_blog/tests/social_profile/test_models.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/social_profile/test_views.py" afterPath="$PROJECT_DIR$/my_blog/tests/social_profile/test_views.py" />
+      <change beforePath="$PROJECT_DIR$/my_blog/tests/test_fixture.py" afterPath="$PROJECT_DIR$/my_blog/tests/test_fixture.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,24 +36,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my_blog/blueprints/social_profile/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>flash</find>
       <find>post_title</find>
       <find>user_</find>
       <find>user_id</find>
@@ -65,6 +69,7 @@
       <find>side</find>
       <find>comm</find>
       <find>nav ul.main-navigation li a</find>
+      <find>stand</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -73,8 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/my_blog/blueprints/admin/__init__.py" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/admin/templates/admin.html" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/main/models.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/auth/templates/login_form.html" />
         <option value="$PROJECT_DIR$/cli/cli.py" />
@@ -87,10 +90,8 @@
         <option value="$PROJECT_DIR$/my_blog/tests/conttest.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/social_profile/models.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/auth/url.py" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/social_profile/views.py" />
         <option value="$PROJECT_DIR$/my_blog/static/js/main.js" />
         <option value="$PROJECT_DIR$/cli/commands/cmd_test.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/test_fixture.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/admin/templates/admin-comments_panel.html" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/admin/templates/admin-posts_panel.html" />
@@ -99,37 +100,40 @@
         <option value="$PROJECT_DIR$/cli/commands/cmd_cov.py" />
         <option value="$PROJECT_DIR$/.coveragerc" />
         <option value="$PROJECT_DIR$/cli/commands/.coveragerc" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/auth/views.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/conftest.py" />
         <option value="$PROJECT_DIR$/my_blog/tests/main/test_models.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/social_profile/test_views.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/admin/test_views.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/auth/test_views.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/auth/test_models.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/social_profile/test_models.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/blog/templates/tag.html" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/main/templates/blog.html" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/main/views.py" />
         <option value="$PROJECT_DIR$/my_blog/templates/pagination_macros.html" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/main/templates/blogpost-intro.html" />
-        <option value="$PROJECT_DIR$/my_blog/tests/main/test_views.py" />
-        <option value="$PROJECT_DIR$/my_blog/tests/blog/test_views.py" />
-        <option value="$PROJECT_DIR$/my_blog/app.py" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/forms.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/blog/templates/edit_form.html" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/models.py" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/views.py" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/main/templates/home.html" />
-        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/templates/comment_form.html" />
-        <option value="$PROJECT_DIR$/my_blog/static/css/main.css" />
         <option value="$PROJECT_DIR$/my_blog/blueprints/blog/templates/read.html" />
         <option value="$PROJECT_DIR$/my_blog/templates/base.html" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/social_profile/__init__.py" />
+        <option value="$PROJECT_DIR$/my_blog/app.py" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/templates/comment_form.html" />
+        <option value="$PROJECT_DIR$/my_blog/static/css/main.css" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/auth/views.py" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/forms.py" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/models.py" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/blog/views.py" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/main/views.py" />
+        <option value="$PROJECT_DIR$/my_blog/blueprints/social_profile/views.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/test_fixture.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/admin/test_views.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/auth/test_models.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/auth/test_views.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/social_profile/test_views.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/social_profile/test_models.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/main/test_views.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/conftest.py" />
+        <option value="$PROJECT_DIR$/my_blog/tests/blog/test_views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="933" />
     <option name="height" value="688" />
   </component>
@@ -212,11 +216,35 @@
               <item name="FlaskBlogSite" type="462c0819:PsiDirectoryNode" />
               <item name="my_blog" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlaskBlogSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlaskBlogSite" type="462c0819:PsiDirectoryNode" />
+              <item name="my_blog" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlaskBlogSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlaskBlogSite" type="462c0819:PsiDirectoryNode" />
+              <item name="my_blog" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FlaskBlogSite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="FlaskBlogSite" type="462c0819:PsiDirectoryNode" />
+              <item name="my_blog" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlaskBlogSite" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlaskBlogSite" type="462c0819:PsiDirectoryNode" />
+              <item name="my_blog" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="social_profile" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,9 +297,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20089285" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20089285" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -317,25 +344,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/admin/templates/admin-posts_panel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="69" column="56" lean-forward="false" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/blueprints/admin/templates/admin-comments_panel.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -361,13 +374,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/test_fixture.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -414,17 +420,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/conftest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="27" lean-forward="false" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/blueprints/social_profile/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -470,48 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/admin/test_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/auth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/auth/test_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/social_profile/test_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/social_profile/test_models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/auth/test_models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="6" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/templates/tag.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -519,22 +477,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/main/test_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="11" lean-forward="true" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/credentials.json" />
     <entry file="file://$PROJECT_DIR$/package-lock.json" />
-    <entry file="file://$PROJECT_DIR$/my_blog/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -553,13 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="54" column="10" lean-forward="false" selection-start-line="54" selection-start-column="10" selection-end-line="54" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -584,25 +521,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/tests/blog/test_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" column="77" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/templates/pagination_macros.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="52" column="39" lean-forward="false" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -618,63 +540,197 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/static/css/main.css">
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/main/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="270" column="16" lean-forward="false" selection-start-line="270" selection-start-column="16" selection-end-line="270" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-391">
-          <caret line="91" column="22" lean-forward="false" selection-start-line="87" selection-start-column="3" selection-end-line="91" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="187">
+          <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#2;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/templates/read.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="986">
           <caret line="58" column="8" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/views.py">
+    <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="136" column="16" lean-forward="false" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/social_profile/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="66" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/templates/comment_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+        <state relative-caret-position="221">
+          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/main/templates/home.html">
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="e#0#79#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="6" column="49" lean-forward="false" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="102" column="42" lean-forward="true" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/blueprints/main/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="55" column="61" lean-forward="false" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#44#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my_blog/blueprints/social_profile/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="244">
+          <caret line="100" column="21" lean-forward="true" selection-start-line="100" selection-start-column="21" selection-end-line="100" selection-end-column="21" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/admin/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#25#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/auth/test_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/auth/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/social_profile/test_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="18" column="42" lean-forward="false" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/conftest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="68" column="28" lean-forward="true" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/blog/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="83" column="12" lean-forward="false" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/test_fixture.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="25" lean-forward="false" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/social_profile/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_blog/tests/main/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

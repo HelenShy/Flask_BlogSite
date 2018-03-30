@@ -1,9 +1,8 @@
 import pytest
-from werkzeug.security import generate_password_hash
-
 import os
+
 from my_blog.app import create_app, db as _db
-from my_blog.blueprints.auth.models import User
+# from my_blog.blueprints.auth.models import User
 
 
 @pytest.yield_fixture(scope="session")
@@ -57,15 +56,15 @@ def db(app):
     # _db.drop_all()
     # _db.create_all()
 
-    password_hash = '12345'
-    params = {
-        'id': 2,
-        'username': 'test',
-        'password': password_hash,
-        'email': 'test@mail.com'
-    }
+    # password_hash = '12345'
+    #  params = {
+    #     'id': 2,
+    #     'username': 'test',
+    #     'password': password_hash,
+    #     'email': 'test@mail.com'
+    # }
 
-    admin = User(**params)
+    # admin = User(**params)
 
     # _db.session.add(admin)
     # _db.session.commit()

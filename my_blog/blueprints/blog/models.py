@@ -99,10 +99,14 @@ class Tag(db.Model):
     name = db.Column(db.String(128))
 
     def blogposts(self, pagenum=1):
-        return self.BlogPost.order_by(desc(BlogPost.id)).paginate(pagenum, 2, error_out=False)
+        return self.BlogPost.order_by(desc(BlogPost.id))\
+            .paginate(pagenum, 2, error_out=False)
 
     def blogposts_published(self, pagenum=1):
-        return self.BlogPost.filter_by(published=True).order_by(desc(BlogPost.id)).paginate(pagenum, 2, error_out=False)
+        return self.BlogPost\
+            .filter_by(published=True)\
+            .order_by(desc(BlogPost.id))\
+            .paginate(pagenum, 2, error_out=False)
 
     @staticmethod
     def get_or_create(name):

@@ -133,6 +133,10 @@ position:relative;
  right:0;
 }
 
+.main_page div.container{
+  padding-left:6rem;
+}
+
 .main_page nav{
  float:left;
  }

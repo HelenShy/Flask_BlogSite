@@ -18,5 +18,10 @@
   "my_blog/tests/main/test_views.py::TestAuthorized::()::test_index_page",
   "my_blog/tests/social_profile/test_models.py::TestModel::()::test_social_profile",
   "my_blog/tests/social_profile/test_views.py::TestPage::()::test_google_auth",
-  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_facebook_auth"
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_facebook_auth",
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_github_auth",
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_google_login",
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_facebook_login",
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_github_login",
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_profile_logout"
 ]

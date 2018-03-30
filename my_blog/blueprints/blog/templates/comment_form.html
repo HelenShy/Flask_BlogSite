@@ -19,14 +19,14 @@
           <div class="col-sm-4 col-xs-7">
 
             {% macro show_provider_button(display_name) %}
-              <a href="{{ url_for(display_name + '.connect_' + display_name) }}">
+              <a href="{{ url_for('profile.login', provider=display_name) }}">
                 <img class='social_icon' src="{{url_for('static', filename='/img/' + display_name + '.png')}}" alt="{{display_name}}">
               </a>
             {% endmacro %}
 
             {{ show_provider_button('facebook') }}
             {{ show_provider_button('google') }}
-            {{ show_provider_button('twitter') }}
+            {{ show_provider_button('github') }}
 
           </div>
 

@@ -1,5 +1,5 @@
-from flask import url_for
-from my_blog.tests.test_fixture import ViewTestMixin, assert_status_with_message
+from my_blog.tests.test_fixture import ViewTestMixin, \
+    assert_status_with_message
 
 
 class TestAuthorized(ViewTestMixin):

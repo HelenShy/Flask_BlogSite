@@ -18,7 +18,6 @@ class TestPage(object):
         response = client.get(url_for('main.page', pagenum=1))
         assert response.status_code == 200
 
-
     def test_tag_page(self, client):
         """
         Test that tag page response is 200

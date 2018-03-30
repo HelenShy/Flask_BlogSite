@@ -4,5 +4,6 @@
   "my_blog/tests/main/test_views.py::TestPage::()::test_403_page": true,
   "my_blog/tests/main/test_views.py::TestPage::()::test_login": true,
   "my_blog/tests/main/test_views.py::TestPage::()::test_main_page": true,
-  "my_blog/tests/main/test_views.py::TestPage::()::test_page_not_found_403": true
+  "my_blog/tests/main/test_views.py::TestPage::()::test_page_not_found_403": true,
+  "my_blog/tests/social_profile/test_views.py::TestPage::()::test_profile_logout": true
 }

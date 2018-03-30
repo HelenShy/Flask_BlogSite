@@ -114,7 +114,6 @@ def edit(post_id):
         form.content.data = request.form['content']
         form.published.data = request.form.get('checkbox')
         form.tags.data = request.form['tags']
-        files_to_delete = request.form.getlist('images_delete')
         if form.validate_on_submit():
             form.populate_obj(blogpost)
             db.session.commit()

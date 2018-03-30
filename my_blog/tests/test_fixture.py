@@ -1,6 +1,5 @@
 import pytest
 from flask import url_for
-from werkzeug.security import generate_password_hash
 
 
 def assert_status_with_message(status_code=200, response=None, message=None):

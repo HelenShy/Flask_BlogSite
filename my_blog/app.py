@@ -49,8 +49,8 @@ def create_app(settings_override=None):
     from my_blog.blueprints.social_profile import profile_google
     app.register_blueprint(profile_google, url_prefix='/profile')
 
-    from my_blog.blueprints.social_profile import profile_twitter
-    app.register_blueprint(profile_twitter, url_prefix='/profile')
+    from my_blog.blueprints.social_profile import profile_github
+    app.register_blueprint(profile_github, url_prefix='/profile')
 
     from my_blog.blueprints.social_profile import profile
     app.register_blueprint(profile, url_prefix='/profile')

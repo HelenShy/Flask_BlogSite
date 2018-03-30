@@ -35,7 +35,8 @@ def page(pagenum):
         blogposts = BlogPost.blogposts_page(int(pagenum))
     else:
         blogposts = BlogPost.published_blogposts_page(int(pagenum))
-    return render_template('home.html', blogposts=blogposts, pagenum=pagenum, tags=Tag.all(), quote=quote, tag=None)
+    return render_template('home.html', blogposts=blogposts, pagenum=pagenum,
+                           tags=Tag.all(), quote=quote, tag=None)
 
 
 @main.route('/tag/<name>')
@@ -51,8 +52,8 @@ def tag_page(name, pagenum):
         blogposts = selected_tag.blogposts(int(pagenum))
     else:
         blogposts = selected_tag.blogposts_published(int(pagenum))
-    return render_template('tag.html', tag=selected_tag.name, tags=Tag.all(), quote=quote, blogposts=blogposts,
-                           pagenum=pagenum)
+    return render_template('tag.html', tag=selected_tag.name, tags=Tag.all(),
+                           quote=quote, blogposts=blogposts, pagenum=pagenum)
 
 
 @main.app_errorhandler(403)
