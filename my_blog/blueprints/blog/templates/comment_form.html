@@ -4,8 +4,8 @@
       {{ form.hidden_tag() }}
       <h2>LEAVE A COMMENT</h2>
 
-      <div class="form-group row">
 
+      <div class="form-group row">
         {% if session['current_profile'] %}
           <label class="col-sm-2 col-form-label">Name:</label>
           <div class="col-sm-6 form-logged-in-user">
@@ -15,8 +15,8 @@
             <a class="btn btn-dark btn-logout_social-profile" href="{{ url_for('profile.logout') }}">Logout from {{ oauth_provider }}</a>
           </div>
         {% else %}
-          <label class="col-sm-2 col-form-label">Log in with:</label>
-          <div class="col-sm-3">
+          <label class="col-sm-2 col-xs-4 col-form-label">Log in with:</label>
+          <div class="col-sm-4 col-xs-7">
 
             {% macro show_provider_button(display_name) %}
               <a href="{{ url_for(display_name + '.connect_' + display_name) }}">
@@ -31,18 +31,18 @@
           </div>
 
           <div class="form-group {% if form.sender.errors %} has-error {% endif %}">
-            <div class="col-sm-1 col-form-label">{{form.sender.label() | safe}}</div>
-            <div class="col-sm-6">
+            <div class="col-sm-2 col-xs-4 col-form-label">{{form.sender.label() | safe}}</div>
+            <div class="col-sm-4 col-xs-7">
               {{ form.sender(placeholder="", class="form-control", maxlength=128) | safe}}
             </div>
             <p class="col-sm-7 help-block">
               {{ form.sender.errors[0] | safe}}
           </div>
         {% endif %}
-
       </div>
 
-      <div class="form-group {% if form.content.errors %} has-error {% endif %}">
+
+      <div class="form-group row {% if form.content.errors %} has-error {% endif %}">
          <div class="col-sm-2 col-form-label">{{form.content.label() | safe}}</div>
          <div class="col-sm-10">
            {{ form.content(placeholder="", class="form-control", rows='5', maxlength=516) | safe}}

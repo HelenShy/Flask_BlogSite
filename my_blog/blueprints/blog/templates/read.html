@@ -29,9 +29,9 @@
         <svg class="icon">
           <use xlink:href="{{ url_for('static', filename='img/sprite.svg#icon-price-tags') | replace('%23', '#')}}"></use>
         </svg>
-        {% if  blogpost._tags.items %}
+        {% if  blogpost._tags.__len__() > 0 %}
           {% for tag in blogpost._tags %}
-            <div class="tag"><a href="{{url_for('blog.tag', name=tag.name)}}">{{tag}}</a></div>
+            <div class="tag"><a href="{{url_for('main.tag', name=tag.name)}}">{{tag}}</a></div>
           {% endfor %}
         {% endif %}
       </div>
