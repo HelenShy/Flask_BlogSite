@@ -1,4 +1,5 @@
 from sqlalchemy import desc
+from sqlalchemy.orm import backref
 from flask import Markup
 from markdown import markdown
 import re
@@ -27,6 +28,7 @@ class BlogPost(db.Model):
                             backref=db.backref('BlogPost',
                                                lazy='dynamic'))
     comments = db.relationship('Comment',
+                               cascade="all,delete",
                                backref='blogpost',
                                lazy='dynamic')
 

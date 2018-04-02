@@ -139,7 +139,17 @@ position:relative;
 
 .main_page nav{
  float:left;
- }
+}
+
+@media screen and (max-width: 940px) {
+  .main_page div.container{
+    padding-left:0rem;
+  }
+
+  .main_page nav{
+    float:none;
+  }
+}
 
  .navbar{
   margin-bottom: 0;
